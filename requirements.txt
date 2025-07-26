@@ -1,0 +1,17 @@
+# Pelican static site generator
+pelican[markdown]>=4.8.0
+
+# Additional useful plugins and dependencies
+markdown>=3.4.0
+typogrify>=2.0.7
+webassets>=2.0
+
+# Optional: Additional Pelican plugins
+# pelican-plugins
+# pelican-themes
+
+# Optional: For enhanced markdown features
+pymdown-extensions>=9.0
+
+# Optional: For sitemap generation
+lxml>=4.9.0
