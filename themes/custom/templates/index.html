@@ -3,27 +3,39 @@
 {% block head %}
 {{ super() }}
 <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom-homepage.css" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 {% endblock %}
 
 {% block content %}
-<body class="homepage-override">
+<div class="homepage-override">
 
-<!-- Hero Section -->
+<!-- Hero Section - matching mockup exactly -->
 <section class="hero-section">
-    <div class="hero-content">
-        <div class="hero-text">
-            <h1>Exploring History's Paradoxes</h1>
-            <p>Dive deep into the fascinating contradictions and unexpected twists that have shaped our world throughout history.</p>
-            <a href="#featured" class="hero-cta">Start Exploring</a>
-        </div>
-        <div class="hero-visual">
-            <div class="timeline-graphic">
-                <div class="timeline-content">
-                    <h3>Journey Through Time</h3>
-                    <div class="timeline-visual"></div>
-                    <p>Past • Present • Future</p>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Exploring History's Paradoxes</h1>
+                <p>Dive deep into the fascinating contradictions and unexpected twists that have shaped our world throughout history. Uncover the mysteries that challenge our understanding of time, causality, and reality itself.</p>
+                <a href="#featured" class="btn-primary">Start Exploring</a>
+            </div>
+            <div class="hero-visual">
+                <div class="chart-container">
+                    <div class="chart-header">Timeline Analysis</div>
+                    <div class="chart-content">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-points">
+                            <div class="point point-1" data-year="1920"></div>
+                            <div class="point point-2" data-year="1950"></div>
+                            <div class="point point-3" data-year="1980"></div>
+                            <div class="point point-4" data-year="2020"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>Past</span>
+                            <span>Present</span>
+                            <span>Future</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,5 +162,5 @@
     </div>
 </section>
 
-</body>
+</div>
 {% endblock %}
