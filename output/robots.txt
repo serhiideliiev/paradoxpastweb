@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# This site is not ready for indexing yet
+# Remove this file when you want search engines to index your site

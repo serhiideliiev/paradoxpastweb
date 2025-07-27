@@ -49,7 +49,7 @@ EXTRA_PATH_METADATA = {
 }
 
 # Theme settings
-THEME = 'themes/Flex'
+THEME = 'themes/custom'
 
 # Flex theme navigation
 MAIN_MENU = True

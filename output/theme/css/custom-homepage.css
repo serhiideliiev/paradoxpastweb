@@ -1,0 +1,441 @@
+/* Custom Homepage Design - Paradox Past */
+/* Based on the beautiful mockup design */
+
+/* Import Flex theme base styles first */
+@import url('../../../Flex/static/stylesheet/style.min.css');
+
+/* Typography and Colors */
+:root {
+    --primary-purple: #6366f1;
+    --secondary-purple: #8b5cf6;
+    --light-purple: #e0e7ff;
+    --accent-orange: #f59e0b;
+    --accent-pink: #ec4899;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --background-light: #f8fafc;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Override body and main container */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--background-light);
+}
+
+/* Hide default Flex layout for homepage */
+.homepage-override #content {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+.homepage-override .container {
+    max-width: none;
+    padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+.hero-cta {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.hero-cta:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-graphic {
+    width: 400px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeline-content {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.timeline-visual {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 20px auto;
+    position: relative;
+}
+
+.timeline-visual::before,
+.timeline-visual::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    top: -5px;
+}
+
+.timeline-visual::before {
+    left: 0;
+}
+
+.timeline-visual::after {
+    right: 0;
+}
+
+/* Featured Paradoxes Section */
+.featured-section {
+    padding: 80px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 60px;
+}
+
+.paradox-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.paradox-card {
+    padding: 40px;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.paradox-card:hover {
+    transform: translateY(-5px);
+}
+
+.paradox-card.blue {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+}
+
+.paradox-card.purple {
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+}
+
+.paradox-card.orange {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.paradox-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.paradox-card p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.paradox-card .read-more {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Timeline Section */
+.timeline-section {
+    background: white;
+    padding: 80px 0;
+    margin: 80px 0;
+}
+
+.timeline-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.timeline-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: var(--text-dark);
+}
+
+.timeline-events {
+    display: grid;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-event {
+    background: var(--background-light);
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 4px solid var(--primary-purple);
+    box-shadow: var(--card-shadow);
+}
+
+.timeline-event h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.timeline-event p {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.timeline-event .date {
+    color: var(--primary-purple);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.newsletter-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.newsletter-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.newsletter-section p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.newsletter-form button {
+    background: var(--accent-orange);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+/* Latest Articles Section */
+.articles-section {
+    padding: 80px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.articles-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: var(--text-dark);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.article-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+.article-icon {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.article-card:nth-child(1) .article-icon {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+}
+
+.article-card:nth-child(2) .article-icon {
+    background: linear-gradient(135deg, var(--accent-pink) 0%, #f97316 100%);
+}
+
+.article-card:nth-child(3) .article-icon {
+    background: linear-gradient(135deg, var(--accent-orange) 0%, #eab308 100%);
+}
+
+.article-content {
+    padding: 30px;
+}
+
+.article-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.article-content p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.article-content .read-more {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .paradox-cards,
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+
+/* Hide default Flex content on homepage only */
+.homepage-override article {
+    display: none;
+}
+
+.homepage-override .pagination {
+    display: none;
+}
