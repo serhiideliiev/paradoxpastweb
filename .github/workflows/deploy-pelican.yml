@@ -56,8 +56,8 @@ jobs:
 
       - name: Generate Pelican site
         run: |
-          # Generate the site using Pelican
-          pelican content -s pelicanconf.py
+          # Generate the site using Pelican with production settings
+          pelican content -s publishconf.py
           
           # Verify that the output directory was created
           if [ ! -d "output" ]; then
@@ -123,7 +123,7 @@ jobs:
 
       - name: Generate Pelican site
         run: |
-          pelican content -s pelicanconf.py
+          pelican content -s publishconf.py
           if [ ! -d "output" ]; then
             echo "Error: Output directory was not created"
             exit 1
