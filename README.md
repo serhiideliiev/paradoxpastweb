@@ -15,6 +15,7 @@ This repository contains a Pelican static site with automated deployment to GitH
 
 1. **Edit `pelicanconf.py`**: Update the site information (name, author, etc.)
 2. **Update SITEURL**: Set the correct URL for your GitHub Pages site:
+
    ```python
    SITEURL = 'https://yourusername.github.io/your-repo-name'
    ```
@@ -76,7 +77,7 @@ The workflow provides two deployment methods:
 
 Add any additional Python packages to `requirements.txt`:
 
-```
+```txt
 pelican[markdown]>=4.8.0
 your-package-name>=1.0.0
 ```

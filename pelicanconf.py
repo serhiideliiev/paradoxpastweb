@@ -57,12 +57,6 @@ SITESUBTITLE = 'Where past meets present in fascinating ways'
 SITEDESCRIPTION = 'A digital space exploring the intersections of history, technology, and storytelling'
 SITELOGO = None  # Add a logo URL here if you have one
 
-# Social links for Flex theme
-SOCIAL = (
-    ('github', 'https://github.com/serhiideliiev'),
-    ('envelope', 'mailto:your-email@example.com'),  # Replace with your email
-)
-
 # Flex theme navigation
 MAIN_MENU = True
 MENUITEMS = (
