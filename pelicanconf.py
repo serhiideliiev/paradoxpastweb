@@ -51,12 +51,6 @@ EXTRA_PATH_METADATA = {
 # Theme settings
 THEME = 'themes/Flex'
 
-# Flex theme specific settings
-SITETITLE = 'Project Paradox Past'
-SITESUBTITLE = 'Where past meets present in fascinating ways'
-SITEDESCRIPTION = 'A digital space exploring the intersections of history, technology, and storytelling'
-SITELOGO = None  # Add a logo URL here if you have one
-
 # Flex theme navigation
 MAIN_MENU = True
 MENUITEMS = (
