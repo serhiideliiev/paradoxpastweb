@@ -4,7 +4,7 @@
 # Basic site information
 AUTHOR = 'Paradox Past'
 SITENAME = 'Project Paradox Past'  
-SITEURL = 'https://serhiideliiev.github.io/paradoxpastweb'
+SITEURL = 'https://paradoxpast.me'
 
 # Content settings
 PATH = 'content'
@@ -43,9 +43,10 @@ ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{slug}.html'
 # Static paths
 STATIC_PATHS = ['images', 'extra']
 
-# Extra path metadata for robots.txt
+# Extra path metadata for robots.txt and CNAME
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/CNAME': {'path': 'CNAME'},
 }
 
 # Theme settings
