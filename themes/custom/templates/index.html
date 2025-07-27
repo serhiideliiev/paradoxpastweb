@@ -1,166 +1,232 @@
 {% extends "base.html" %}
 
+{# Homepage template for Project Paradox Past #}
+{# Follows semantic HTML5 and accessibility best practices #}
+
 {% block meta %}
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom-homepage.css">
+{# Custom homepage styles #}
+<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/homepage.css">
+{# Typography and icons #}
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 {% endblock meta %}
 
 {% block content %}
 <div class="homepage-override">
-
-<!-- Hero Section - matching mockup exactly -->
-<section class="hero-section">
+  
+  {# Hero Section #}
+  <section class="hero-section" aria-labelledby="hero-heading">
     <div class="container">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Exploring History's Paradoxes</h1>
-                <p>Dive deep into the fascinating contradictions and unexpected twists that have shaped our world throughout history. Uncover the mysteries that challenge our understanding of time, causality, and reality itself.</p>
-                <a href="#featured" class="btn-primary">Start Exploring</a>
-            </div>
-            <div class="hero-visual">
-                <div class="chart-container">
-                    <div class="chart-header">Timeline Analysis</div>
-                    <div class="chart-content">
-                        <div class="timeline-line"></div>
-                        <div class="timeline-points">
-                            <div class="point point-1" data-year="1920"></div>
-                            <div class="point point-2" data-year="1950"></div>
-                            <div class="point point-3" data-year="1980"></div>
-                            <div class="point point-4" data-year="2020"></div>
-                        </div>
-                        <div class="chart-labels">
-                            <span>Past</span>
-                            <span>Present</span>
-                            <span>Future</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 id="hero-heading">Exploring History's Paradoxes</h1>
+          <p>
+            Dive deep into the fascinating contradictions and unexpected twists 
+            that have shaped our world throughout history. Uncover the mysteries 
+            that challenge our understanding of time, causality, and reality itself.
+          </p>
+          <a href="#featured" class="btn-primary" aria-describedby="hero-cta-description">
+            Start Exploring
+          </a>
+          <span id="hero-cta-description" class="sr-only">
+            Navigate to the featured historical paradoxes section
+          </span>
         </div>
+        <div class="hero-visual" aria-label="Timeline visualization">
+          <div class="chart-container">
+            <div class="chart-header">Timeline Analysis</div>
+            <div class="chart-content" role="img" aria-label="Historical timeline representation">
+              <div class="timeline-line" aria-hidden="true"></div>
+              <div class="timeline-points" aria-hidden="true">
+                <div class="point point-1" data-year="1920"></div>
+                <div class="point point-2" data-year="1950"></div>
+                <div class="point point-3" data-year="1980"></div>
+                <div class="point point-4" data-year="2020"></div>
+              </div>
+              <div class="chart-labels" aria-hidden="true">
+                <span>Past</span>
+                <span>Present</span>
+                <span>Future</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Featured Historical Paradoxes -->
-<section class="featured-section" id="featured">
+  {# Featured Paradoxes Section #}
+  <section class="featured-section" id="featured" aria-labelledby="featured-heading">
     <div class="container">
-        <h2 class="section-title">Featured Historical Paradoxes</h2>
-        <div class="paradox-cards">
-            <div class="paradox-card blue">
-                <h3>The Bootstrap Paradox</h3>
-                <p>How can information or objects exist without ever having been created? Explore the fascinating concept of causal loops in historical events and their implications for our understanding of time.</p>
-                <a href="#" class="read-more">Read full story →</a>
-            </div>
-            <div class="paradox-card purple">
-                <h3>The Ship of Theseus</h3>
-                <p>If every part of something is gradually replaced, is it still the same thing? Discover how this ancient philosophical paradox applies to nations, cultures, and civilizations throughout history.</p>
-                <a href="#" class="read-more">Read full story →</a>
-            </div>
-            <div class="paradox-card orange">
-                <h3>The Grandfather Paradox</h3>
-                <p>What happens when cause and effect create impossible loops? Examine historical events that seem to contradict the linear flow of time and challenge our perception of reality.</p>
-                <a href="#" class="read-more">Read full story →</a>
-            </div>
-        </div>
-    </div>
-</section>
+      <h2 id="featured-heading" class="section-title">Featured Historical Paradoxes</h2>
+      <div class="paradox-cards">
+        
+        <article class="paradox-card paradox-card--blue">
+          <h3>The Bootstrap Paradox</h3>
+          <p>
+            How can information or objects exist without ever having been created? 
+            Explore the fascinating concept of causal loops in historical events 
+            and their implications for our understanding of time.
+          </p>
+          <a href="#" class="read-more" aria-label="Read full story about The Bootstrap Paradox">
+            Read full story →
+          </a>
+        </article>
 
-<!-- Historical Timeline -->
-<section class="timeline-section">
-    <div class="timeline-container">
-        <h2>Historical Timeline</h2>
-        <div class="timeline-events">
-            <div class="timeline-event">
-                <h4>The Library of Alexandria Paradox</h4>
-                <p class="date">Ancient Times</p>
-                <p>How the world's greatest repository of knowledge became its most mysterious loss, creating a paradox about the preservation and destruction of human understanding.</p>
-            </div>
-            <div class="timeline-event">
-                <h4>The Renaissance Time Loop</h4>
-                <p class="date">14th-17th Century</p>
-                <p>Examining how the Renaissance's "rebirth" of classical knowledge created temporal paradoxes where the future influenced its own past.</p>
-            </div>
-            <div class="timeline-event">
-                <h4>The Industrial Revolution's Paradox</h4>
-                <p class="date">18th-19th Century</p>
-                <p>How progress and destruction became inseparably linked, creating a historical contradiction that still shapes our modern world.</p>
-            </div>
-            <div class="timeline-event">
-                <h4>The Information Age Contradiction</h4>
-                <p class="date">20th-21st Century</p>
-                <p>Despite having access to more information than ever before, why do historical mysteries and paradoxes continue to multiply?</p>
-            </div>
-        </div>
-    </div>
-</section>
+        <article class="paradox-card paradox-card--purple">
+          <h3>The Ship of Theseus</h3>
+          <p>
+            If every part of something is gradually replaced, is it still the same thing? 
+            Discover how this ancient philosophical paradox applies to nations, 
+            cultures, and civilizations throughout history.
+          </p>
+          <a href="#" class="read-more" aria-label="Read full story about The Ship of Theseus">
+            Read full story →
+          </a>
+        </article>
 
-<!-- Newsletter Section -->
-<section class="newsletter-section">
-    <div class="newsletter-content">
-        <h2>🔔 Join Our Historical Expeditions</h2>
-        <p>Get notified when we publish new paradoxes and historical mysteries that will challenge your perception of time and reality.</p>
-        <form class="newsletter-form" action="#" method="post">
-            <input type="email" placeholder="Enter your email address" required>
-            <button type="submit">Subscribe</button>
-        </form>
-    </div>
-</section>
+        <article class="paradox-card paradox-card--orange">
+          <h3>The Grandfather Paradox</h3>
+          <p>
+            What happens when cause and effect create impossible loops? 
+            Examine historical events that seem to contradict the linear flow 
+            of time and challenge our perception of reality.
+          </p>
+          <a href="#" class="read-more" aria-label="Read full story about The Grandfather Paradox">
+            Read full story →
+          </a>
+        </article>
 
-<!-- Latest Articles -->
-<section class="articles-section">
+      </div>
+    </div>
+  </section>
+
+  {# Timeline Section #}
+  <section class="timeline-section" aria-labelledby="timeline-heading">
+    <div class="content-container">
+      <h2 id="timeline-heading" class="section-title">Historical Timeline</h2>
+      <div class="timeline-events" role="list">
+        
+        <article class="timeline-event" role="listitem">
+          <h3>The Library of Alexandria Paradox</h3>
+          <time class="timeline-date" datetime="300">Ancient Times</time>
+          <p>
+            How the world's greatest repository of knowledge became its most 
+            mysterious loss, creating a paradox about the preservation and 
+            destruction of human understanding.
+          </p>
+        </article>
+
+        <article class="timeline-event" role="listitem">
+          <h3>The Renaissance Time Loop</h3>
+          <time class="timeline-date" datetime="1400">14th-17th Century</time>
+          <p>
+            Examining how the Renaissance's "rebirth" of classical knowledge 
+            created temporal paradoxes where the future influenced its own past.
+          </p>
+        </article>
+
+        <article class="timeline-event" role="listitem">
+          <h3>The Industrial Revolution's Paradox</h3>
+          <time class="timeline-date" datetime="1750">18th-19th Century</time>
+          <p>
+            How progress and destruction became inseparably linked, creating 
+            a historical contradiction that still shapes our modern world.
+          </p>
+        </article>
+
+        <article class="timeline-event" role="listitem">
+          <h3>The Information Age Contradiction</h3>
+          <time class="timeline-date" datetime="1950">20th-21st Century</time>
+          <p>
+            Despite having access to more information than ever before, why do 
+            historical mysteries and paradoxes continue to multiply?
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  {# Newsletter Section #}
+  <section class="newsletter-section" aria-labelledby="newsletter-heading">
+    <div class="content-container">
+      <h2 id="newsletter-heading">
+        <span role="img" aria-label="Bell notification">🔔</span>
+        Join Our Historical Expeditions
+      </h2>
+      <p>
+        Get notified when we publish new paradoxes and historical mysteries 
+        that will challenge your perception of time and reality.
+      </p>
+      <form class="newsletter-form" action="#" method="post" novalidate>
+        <label for="newsletter-email" class="sr-only">
+          Email address for newsletter subscription
+        </label>
+        <input 
+          type="email" 
+          id="newsletter-email"
+          name="email"
+          placeholder="Enter your email address" 
+          required
+          aria-describedby="newsletter-error"
+        >
+        <button type="submit" class="btn-secondary">
+          Subscribe
+        </button>
+        <div id="newsletter-error" class="sr-only" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  {# Latest Articles Section #}
+  <section class="articles-section" aria-labelledby="articles-heading">
     <div class="container">
-        <h2>Latest Articles</h2>
-        <div class="articles-grid">
-            {% for article in articles_page.object_list[:3] %}
-            <article class="article-card">
-                <div class="article-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="article-content">
-                    <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
-                    <p>{{ article.summary|default(article.content|striptags|truncate(150)) }}</p>
-                    <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">Continue reading →</a>
-                </div>
-            </article>
-            {% endfor %}
-            
-            <!-- Static cards if no articles exist -->
-            {% if articles_page.object_list|length == 0 %}
-            <article class="article-card">
-                <div class="article-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="article-content">
-                    <h3>The Time Traveler's Dilemma</h3>
-                    <p>Exploring the philosophical and practical implications of temporal paradoxes in historical research and modern science.</p>
-                    <a href="#" class="read-more">Continue reading →</a>
-                </div>
-            </article>
-            <article class="article-card">
-                <div class="article-icon">
-                    <i class="fas fa-book"></i>
-                </div>
-                <div class="article-content">
-                    <h3>Lost Civilizations and Modern Echoes</h3>
-                    <p>How ancient societies continue to influence our present day in ways that seem to defy the linear progression of time.</p>
-                    <a href="#" class="read-more">Continue reading →</a>
-                </div>
-            </article>
-            <article class="article-card">
-                <div class="article-icon">
-                    <i class="fas fa-scroll"></i>
-                </div>
-                <div class="article-content">
-                    <h3>The Archive of Tomorrow</h3>
-                    <p>Investigating how future discoveries are changing our understanding of past events, creating temporal loops in historical knowledge.</p>
-                    <a href="#" class="read-more">Continue reading →</a>
-                </div>
-            </article>
-            {% endif %}
-        </div>
+      <h2 id="articles-heading" class="section-title">Latest Articles</h2>
+      <div class="articles-grid">
+        {% for article in articles_page.object_list[:3] %}
+        <article class="article-card">
+          <div class="article-icon" aria-hidden="true">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="article-content">
+            <h3>
+              <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">
+                {{ article.title }}
+              </a>
+            </h3>
+            <p>{{ article.summary|truncate(120) }}</p>
+            <footer class="article-meta">
+              <time datetime="{{ article.date.isoformat() }}">
+                {{ article.locale_date }}
+              </time>
+              {% if article.category %}
+              <span class="category">{{ article.category }}</span>
+              {% endif %}
+            </footer>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
     </div>
-</section>
+  </section>
 
 </div>
-{% endblock %}
+
+{# Screen reader only utility class #}
+<style>
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+
+{% endblock content %}

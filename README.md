@@ -1,134 +1,205 @@
-# Pelican Static Site with GitHub Actions Deployment
+# Project Paradox Past - Development Guide
 
-This repository contains a Pelican static site with automated deployment to GitHub Pages using GitHub Actions.
+## Overview
 
-## Setup Instructions
+This is a Pelican static sit├── pelicanconf.py             # Main configuration (PEP-8 compliant)
+├── pelicanconf_dev.py         # Development configuration  
+├── publishconf.py             # Production configurationenerator project for exploring historical paradoxes and temporal mysteries. The project follows modern Python development practices, PEP-8 compliance, and professional web development standards.
 
-### 1. Repository Setup
+## 🚀 Quick Start
 
-1. Fork or clone this repository
-2. Go to your repository settings on GitHub
-3. Navigate to **Pages** in the left sidebar
-4. Under **Source**, select "GitHub Actions"
+### Prerequisites
 
-### 2. Configuration
+- Python 3.8+
+- pip package manager
+- Git (for deployment)
 
-1. **Edit `pelicanconf.py`**: Update the site information (name, author, etc.)
-2. **Update SITEURL**: Set the correct URL for your GitHub Pages site:
+### Installation
 
-   ```python
-   SITEURL = 'https://yourusername.github.io/your-repo-name'
+1. **Clone and setup:**
+   ```bash
+   git clone https://github.com/serhiideliiev/paradoxpastweb.git
+   cd project_paradox_past_website
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-### 3. Content Creation
+2. **Install dependencies:**
+   ```bash
+   make install
+   ```
 
-- Add your content files to the `content/` directory
-- Use Markdown format with Pelican metadata headers
-- Images and other static files go in `content/images/` or `content/extra/`
+3. **Start development:**
+   ```bash
+   make devserver
+   ```
+   Visit: http://localhost:8000
 
-### 4. Local Development
+### Quick Commands
 
 ```bash
 # Install dependencies
-pip install -r requirements.txt
+make install
 
-# Generate the site
-pelican content -s pelicanconf.py
+# Generate site for development
+make html
 
-# Serve locally (optional)
-pelican --listen --autoreload
+# Start development server
+make serve
+
+# Generate and serve in one command
+make devserver
+
+# Clean generated files
+make clean
+
+# Format Python code
+make format
+
+# Lint Python code
+make lint
+
+# Deploy to GitHub Pages
+make github
 ```
 
-## GitHub Actions Workflow
-
-The workflow (`.github/workflows/deploy-pelican.yml`) includes:
-
-### Features
-
-- **Automatic Deployment**: Triggers on pushes to the `main` branch
-- **Python Environment**: Sets up Python 3.11
-- **Dependency Caching**: Caches pip dependencies for faster builds
-- **Site Generation**: Runs Pelican to generate static files
-- **GitHub Pages Deployment**: Automatically deploys to GitHub Pages
-
-### Two Deployment Options
-
-The workflow provides two deployment methods:
-
-1. **Default**: Uses the official `actions/deploy-pages` action (recommended)
-2. **Alternative**: Uses `peaceiris/actions-gh-pages` action (set `if: false` to `if: true` to enable)
-
-### Workflow Steps
-
-1. **Build Job**:
-   - Checkout repository
-   - Set up Python environment
-   - Cache dependencies
-   - Install Pelican and dependencies
-   - Generate the site
-   - Upload artifacts
-
-2. **Deploy Job**:
-   - Deploy to GitHub Pages using the built artifacts
-
-## Customization
-
-### Adding Dependencies
-
-Add any additional Python packages to `requirements.txt`:
-
-```txt
-pelican[markdown]>=4.8.0
-your-package-name>=1.0.0
-```
-
-### Pelican Configuration
-
-Modify `pelicanconf.py` to customize:
-- Site metadata
-- URL structure
-- Themes and plugins
-- Static file handling
-
-### Workflow Customization
-
-You can modify the workflow to:
-- Change Python version
-- Add additional build steps
-- Customize deployment settings
-- Add environment-specific configurations
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Output directory not created**: Check that `pelicanconf.py` is properly configured
-2. **Dependencies not found**: Ensure all required packages are in `requirements.txt`
-3. **Deployment fails**: Verify that GitHub Pages is enabled in repository settings
-
-### Debugging
-
-- Check the Actions tab in your GitHub repository for workflow runs
-- Review the build logs for specific error messages
-- Test locally before pushing changes
-
-## File Structure
+## 📁 Project Structure
 
 ```
-.
-├── .github/
-│   └── workflows/
-│       └── deploy-pelican.yml    # GitHub Actions workflow
-├── content/                      # Your content files
-│   ├── images/                   # Static images
-│   └── welcome.md               # Sample content
-├── pelicanconf.py               # Pelican configuration
-├── requirements.txt             # Python dependencies
-└── README.md                    # This file
+project_paradox_past_website/
+├── .github/workflows/          # GitHub Actions CI/CD
+│   └── deploy-pelican.yml     # Automated deployment
+├── content/                   # Markdown content files
+│   ├── extra/                # Static files (robots.txt, CNAME)
+│   ├── images/               # Content images
+│   └── *.md                  # Articles/posts
+├── themes/
+│   └── custom/               # Custom theme extending Flex
+│       ├── static/
+│       │   └── css/
+│       │       ├── homepage-refactored.css    # Modern CSS architecture
+│       │       └── homepage-consolidated.css  # Legacy CSS
+│       └── templates/
+│           ├── base-refactored.html          # Modern base template
+│           ├── index-refactored.html         # Modern homepage template
+│           ├── base.html                     # Original base template
+│           └── index.html                    # Original homepage template
+├── output/                    # Generated static site
+├── pelicanconf_refactored.py  # Main configuration (PEP-8 compliant)
+├── pelicanconf_dev_refactored.py  # Development configuration
+├── publishconf.py             # Production configuration
+├── pelicanconf.py             # Original configuration (legacy)
+├── pelicanconf_dev.py         # Original dev config (legacy)
+├── Makefile                   # Development workflow automation
+│               ├── newsletter.css   # Newsletter section
+│               ├── articles.css     # Articles grid
+│               └── responsive.css   # Mobile styles
+├── docs/                     # Documentation
+│   ├── CUSTOM_DOMAIN_NOTES.md
+│   ├── DECAP_CMS_SETUP.md
+│   └── homepage-mockup.png
+├── output/                   # Generated site (git-ignored)
+├── pelicanconf.py           # Pelican configuration
+├── requirements.txt         # Python dependencies
+└── .gitignore              # Git ignore rules
 ```
 
-## Resources
+## 🎨 Design System
 
-- [Pelican Documentation](https://docs.getpelican.com/)
-- [GitHub Pages Documentation](https://docs.github.com/en/pages)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+### Color Palette
+- **Primary Blue:** `#5b72ee`
+- **Secondary Purple:** `#9333ea`
+- **Orange:** `#f59e0b`
+- **Pink:** `#ec4899`
+- **Text Colors:** `#1f2937` (dark), `#6b7280` (gray), `#9ca3af` (light)
+
+### Typography
+- **Font Family:** Inter (Google Fonts)
+- **Weights:** 300, 400, 500, 600, 700
+
+### Components
+- **Hero Section:** Two-column layout with CTA
+- **Paradox Cards:** Three-column grid with gradients
+- **Timeline:** Vertical timeline with events
+- **Newsletter:** Gradient background with signup
+- **Articles:** Three-column article grid
+
+## 🛠 Configuration
+
+### Custom Domain Setup
+1. Add `CNAME` file in `content/extra/` with your domain
+2. Configure DNS with these records:
+   ```
+   Type: A, Host: @, Value: 185.199.108.153
+   Type: A, Host: @, Value: 185.199.109.153
+   Type: A, Host: @, Value: 185.199.110.153
+   Type: A, Host: @, Value: 185.199.111.153
+   Type: CNAME, Host: www, Value: serhiideliiev.github.io
+   ```
+
+### Environment Variables
+- Update `SITEURL` in `pelicanconf.py` for your domain
+- Update social links in `SOCIAL` configuration
+- Replace email address in social links
+
+## 🔧 Development
+
+### Adding Content
+1. Create `.md` files in `content/`
+2. Use frontmatter for metadata:
+   ```markdown
+   Title: Your Post Title
+   Date: 2024-01-01 10:00
+   Category: Technology
+   Tags: tag1, tag2
+   Slug: your-post-slug
+   
+   Your content here...
+   ```
+
+### Customizing Design
+- Modify CSS components in `themes/custom/static/css/components/`
+- Update templates in `themes/custom/templates/`
+- CSS is modular - edit individual component files
+
+### Adding Features
+- Install Pelican plugins via `pip`
+- Add plugin names to `PLUGINS` in `pelicanconf.py`
+- Configure plugin settings as needed
+
+## 📦 Deployment
+
+### Automatic Deployment
+- Pushes to `main` branch trigger GitHub Actions
+- Site deploys automatically to GitHub Pages
+- Custom domain configured via CNAME
+
+### Manual Deployment
+```bash
+pelican content
+# Upload output/ directory to web server
+```
+
+## 🔍 SEO & Performance
+
+- Semantic HTML structure
+- Meta tags for social sharing
+- Mobile-responsive design
+- Fast loading with optimized CSS
+- Search engine friendly URLs
+
+## 📝 License
+
+This project is open source. Feel free to use it as a template for your own sites.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test locally
+5. Submit a pull request
+
+---
+
+Built with ❤️ using [Pelican](https://getpelican.com/) and deployed on [GitHub Pages](https://pages.github.com/)

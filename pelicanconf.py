@@ -1,71 +1,162 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- #
+# -*- coding: utf-8 -*-
+"""
+Pelican configuration file for Project Paradox Past.
 
-# Basic site information
+This configuration follows PEP-8 and Pelican best practices.
+"""
+
+from datetime import datetime
+
+# =============================================================================
+# BASIC SITE INFORMATION
+# =============================================================================
+
 AUTHOR = 'Paradox Past'
-SITENAME = 'Project Paradox Past'  
+SITENAME = 'Project Paradox Past'
 SITEURL = 'https://paradoxpast.me'
-
-# Content settings
-PATH = 'content'
-TIMEZONE = 'UTC'
-DEFAULT_LANG = 'en'
-
-# Feed generation (usually disabled for development)
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
-
-# Flex theme specific settings
-SITETITLE = 'Project Paradox Past'
-SITESUBTITLE = 'Where past meets present in fascinating ways'
-SITEDESCRIPTION = 'A digital space exploring the intersections of history, technology, and storytelling'
-SITELOGO = None  # Add a logo URL here if you have one
-
-# Social links for Flex theme (replaces old SOCIAL widget)
-SOCIAL = (
-    ('github', 'https://github.com/serhiideliiev'),
-    ('envelope', 'mailto:your-email@example.com'),  # Replace with your email
+SITEDESCRIPTION = (
+    'A digital space exploring the intersections of history, '
+    'technology, and storytelling'
 )
 
-DEFAULT_PAGINATION = 10
+# Site metadata
+SITETITLE = SITENAME
+SITESUBTITLE = 'Where past meets present in fascinating ways'
+SITELOGO = None  # TODO: Add logo URL when available
 
-# Output settings
+# =============================================================================
+# CONTENT CONFIGURATION
+# =============================================================================
+
+# Content paths
+PATH = 'content'
 OUTPUT_PATH = 'output/'
-DELETE_OUTPUT_DIRECTORY = True
-
-# URL and save as patterns
-ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{slug}.html'
-ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{slug}.html'
-
-# Static paths
 STATIC_PATHS = ['images', 'extra']
 
-# Extra path metadata for robots.txt and CNAME
-EXTRA_PATH_METADATA = {
-    'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/CNAME': {'path': 'CNAME'},
-}
+# Content processing
+TIMEZONE = 'UTC'
+DEFAULT_LANG = 'en'
+LOCALE = 'en_US.UTF-8'
 
-# Theme settings
+# Article and page URL patterns
+ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{slug}.html'
+ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{slug}.html'
+PAGE_URL = 'pages/{slug}.html'
+PAGE_SAVE_AS = 'pages/{slug}.html'
+
+# =============================================================================
+# THEME CONFIGURATION
+# =============================================================================
+
 THEME = 'themes/custom'
 
-# Flex theme navigation
+# Theme-specific settings
 MAIN_MENU = True
+DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = True
+
+# Navigation menu items
 MENUITEMS = (
     ('Archives', '/archives.html'),
     ('Categories', '/categories.html'),
     ('Tags', '/tags.html'),
 )
 
-# Prevent search engine indexing (remove when ready to go public)
-ROBOTS = 'noindex, nofollow'
+# Social links
+SOCIAL = (
+    ('github', 'https://github.com/serhiideliiev'),
+    # TODO: Replace with actual email
+    ('envelope', 'mailto:contact@paradoxpast.me'),
+)
 
-# Plugin settings (uncomment and modify as needed)
-# PLUGIN_PATHS = ['pelican-plugins']
-# PLUGINS = ['sitemap', 'neighbors']
+# Custom CSS
+CUSTOM_CSS = 'theme/css/homepage.css'
 
-# Uncomment following line if you want document-relative URLs when developing
+# =============================================================================
+# FEED CONFIGURATION
+# =============================================================================
+
+# Feed generation is disabled during development
+FEED_ALL_ATOM = None
+CATEGORY_FEED_ATOM = None
+TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
+
+# =============================================================================
+# PAGINATION AND ORGANIZATION
+# =============================================================================
+
+DEFAULT_PAGINATION = 10
+PAGINATION_PATTERNS = (
+    (1, '{url}', '{save_as}'),
+    (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
+)
+
+# Article organization
+USE_FOLDER_AS_CATEGORY = True
+DISPLAY_CATEGORIES_ON_SIDEBAR = True
+DISPLAY_TAGS_ON_SIDEBAR = True
+
+# =============================================================================
+# OUTPUT CONFIGURATION
+# =============================================================================
+
+DELETE_OUTPUT_DIRECTORY = True
+
+# Extra path metadata for special files
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+}
+
+# =============================================================================
+# SEO AND METADATA
+# =============================================================================
+
+# Search engine settings
+ROBOTS = 'noindex, nofollow'  # Change to 'index, follow' for production
+
+# Open Graph and Twitter Card metadata
+OG_LOCALE = 'en_US'
+TWITTER_USERNAME = 'paradoxpast'  # TODO: Update when Twitter account created
+
+# =============================================================================
+# PLUGIN CONFIGURATION
+# =============================================================================
+
+# Plugin paths and enabled plugins
+PLUGIN_PATHS = ['pelican-plugins']
+# PLUGINS = [
+#     'sitemap',
+#     'neighbors',
+#     'series',
+# ]
+
+# Sitemap plugin configuration
+# SITEMAP = {
+#     'format': 'xml',
+#     'priorities': {
+#         'articles': 0.5,
+#         'indexes': 0.5,
+#         'pages': 0.5
+#     },
+#     'changefreqs': {
+#         'articles': 'monthly',
+#         'indexes': 'daily',
+#         'pages': 'monthly'
+#     }
+# }
+
+# =============================================================================
+# DEVELOPMENT SETTINGS
+# =============================================================================
+
+# Uncomment for development with relative URLs
 # RELATIVE_URLS = True
+
+# Copyright notice
+COPYRIGHT_YEAR = datetime.now().year
+COPYRIGHT_NAME = AUTHOR

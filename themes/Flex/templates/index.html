@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.index_top %}
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <ins class="adsbygoogle ads-responsive"
        data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
        data-ad-slot="{{ GOOGLE_ADSENSE.ads.index_top }}"></ins>
@@ -36,7 +36,7 @@
   <div>
     {% if summarise or article.metadata['summary'] or SUMMARY_MAX_LENGTH %}
       {% if  article.featured_image %}
-        <img src="{{ article.featured_image }}">
+        <img src="{{ article.featured_image }}" alt="{{ article.title }}">
       {% endif %}
       <div>{{ article.summary }}</div>
       {% if article.content != article.summary %}
@@ -59,7 +59,7 @@
 {% include "partial/pagination.html" %}
 
 {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.index_bottom %}
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <ins class="adsbygoogle ads-responsive"
        data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
        data-ad-slot="{{ GOOGLE_ADSENSE.ads.index_bottom }}"></ins>

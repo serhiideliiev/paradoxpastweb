@@ -1,3 +1,6 @@
+{# Base template for Project Paradox Past #}
+{# Follows Pelican Flex theme conventions with custom enhancements #}
+
 {% if 'jinja2.ext.i18n' not in JINJA_ENVIRONMENT.extensions %}
   {%- macro _(msg) -%}
     {{ msg % kwargs }}
@@ -5,185 +8,264 @@
 {% endif %}
 
 <!DOCTYPE html>
-<html lang="{{ DEFAULT_LANG }}">
+<html lang="{{ DEFAULT_LANG | default('en') }}"{% if USE_LESS %} class="no-js"{% endif %}>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% if page in hidden_pages %}
-  <meta name="robots" content="noindex, nofollow" />
-  {% else %}
-  <meta name="robots" content="{{ ROBOTS }}" />
+  {# Meta tags #}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  {# Robots meta tag for search engine indexing control #}
+  <meta name="robots" content="{{ ROBOTS | default('noindex, nofollow') }}">
+  
+  {# Title and description #}
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+  
+  {% if SITE_DESCRIPTION %}
+  <meta name="description" content="{{ SITE_DESCRIPTION }}">
   {% endif %}
-
-  {% if USE_GOOGLE_FONTS != False %}
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  {# Author #}
+  {% if AUTHOR %}
+  <meta name="author" content="{{ AUTHOR }}">
   {% endif %}
-
-  {% if USE_LESS %}
-    <link rel="stylesheet/less" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/stylesheet/style.less">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
-  {% else %}
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/stylesheet/style.min.css">
+  
+  {# Canonical URL #}
+  {% block canonical_rel %}{% endblock canonical_rel %}
+  
+  {# Open Graph meta tags #}
+  {% block open_graph %}
+  <meta property="og:site_name" content="{{ SITENAME }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}{{ SITENAME }}{% endblock og_title %}">
+  <meta property="og:url" content="{{ SITEURL }}{% block og_url %}/{% endblock og_url %}">
+  {% if SITE_DESCRIPTION %}
+  <meta property="og:description" content="{{ SITE_DESCRIPTION }}">
   {% endif %}
-
-  {# DARK THEME STYLES #}
-  {% if THEME_COLOR == "dark" or THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE or THEME_COLOR_ENABLE_USER_OVERRIDE %}
-    <link id="dark-theme-style" rel="stylesheet" type="text/css"
-      {% if THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE %}
-        {% if THEME_COLOR|default("light") == "dark" %}
-          media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
-        {% else %}
-          media="(prefers-color-scheme: dark)"
-        {% endif %}
-      {% elif THEME_COLOR_ENABLE_USER_OVERRIDE and THEME_COLOR|default("light") == "light" %}
-        disabled="disabled"
-      {% endif %}
-    href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/stylesheet/dark-theme.min.css">
+  {% endblock open_graph %}
+  
+  {# Twitter Card meta tags #}
+  {% block twitter_card %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% block twitter_title %}{{ SITENAME }}{% endblock twitter_title %}">
+  {% if SITE_DESCRIPTION %}
+  <meta name="twitter:description" content="{{ SITE_DESCRIPTION }}">
   {% endif %}
-
-  {# PYGMENTS STYLES #}
-  {% if THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE or THEME_COLOR_ENABLE_USER_OVERRIDE or THEME_COLOR == "dark" %}
-    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
-          {% if THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE %}
-            {% if THEME_COLOR|default("light") == "dark" %}
-              media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
-            {% else %}
-              media="(prefers-color-scheme: dark)"
-            {% endif %}
-          {% elif THEME_COLOR_ENABLE_USER_OVERRIDE and THEME_COLOR|default("light") == "light" %}
-            disabled="disabled"
-          {% endif %}
-          href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/pygments/{{ PYGMENTS_STYLE_DARK or PYGMENTS_STYLE or 'monokai' }}.min.css">
+  {% endblock twitter_card %}
+  
+  {# Feeds #}
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed">
   {% endif %}
-  {% if THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE or not THEME_COLOR or THEME_COLOR == "light" %}
-    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
-          {% if THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE %}
-            {% if THEME_COLOR|default("light") == "dark" %}
-              media="(prefers-color-scheme: light)"
-            {% else %}
-              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-            {% endif %}
-          {% endif %}
-          href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/pygments/{{ PYGMENTS_STYLE|default('github') }}.min.css">
+  {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed">
   {% endif %}
-
-  {% if PLUGINS and ('tipue_search' in PLUGINS or 'pelican.plugins.tipue_search' in PLUGINS) %}
-      {% if USE_GOOGLE_FONTS != False %}
-      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400|Open+Sans" rel="stylesheet">
-      {% endif %}
-    <link rel="stylesheet" 
-    href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/tipuesearch/tipuesearch.min.css" />
+  
+  {# Favicon #}
+  {% if FAVICON %}
+  <link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON }}">
   {% endif %}
-
-  {% if 'pelican.plugins.search' in PLUGINS %}
-  <link rel="stylesheet"
-        type="text/css"
-        href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/stork/stork.css" />
-  {% endif %}
-
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/font-awesome/css/solid.css">
-
-  {% if CUSTOM_CSS %}
-  <link rel="stylesheet" type="text/css" href="{% if main_siteurl is defined %}{{ main_site }}{% else %}{{ SITEURL }}{% endif %}/{{ CUSTOM_CSS }}">
-  {% endif %}
-
-  {% include "partial/icon.html" %}
-
-  {% include "partial/color.html" %}
-
-  {% include "partial/feed.html" %}
-
-  {% include "partial/ga.html" %}
-  {% include "partial/ggst.html" %}
-
-
-  {% include "partial/plausible.html" %}
-
-  {% if PGP_KEY %}
-    <link rel="pgpkey" type="application/pgp-keys" href="{{ SITEURL }}/{{ PGP_KEY }}">
-  {% endif %}
-
-  {% if WEBMENTION_URL %}
-    <link rel="webmention" href="{{ WEBMENTION_URL }}" />
-  {% endif %}
-
-  {% if PINGBACK_URL %}
-    <link rel="pingback" href="{{ PINGBACK_URL }}" />
-  {% endif %}
-
-  {% if not PLUGINS or 'seo' not in PLUGINS %}
-    {% if REL_CANONICAL %}
-      {% if page %}
-        <link rel="canonical" href="{{ SITEURL }}/{{ page.url }}">
-      {% elif article %}
-        <link rel="canonical" href="{{ SITEURL }}/{{ article.url }}">
-      {% elif page_name == 'index' and not articles_previous_page %}
-        <link rel="canonical" href="{{ SITEURL }}">
-      {% elif author or category or tag or page_name == 'index' %}
-        <link rel="canonical" href="{{ SITEURL }}/{{ articles_page.url }}">
-      {% else %}
-        <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}">
-      {% endif %}
-    {% endif %}
-  {% endif %} 
-
+  
+  {# Stylesheets #}
   {% block meta %}
-    <meta name="author" content="{{ AUTHOR }}" />
-    <meta name="description" content="{{ SITEDESCRIPTION }}" />
-    {% include "partial/og.html" %}
-  {% endblock %}
-
-  <title>{{ SITENAME }}{% block title %}{% endblock %}</title>
-
-  {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.page_level_ads %}
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "{{ GOOGLE_ADSENSE.ca_id }}",
-      enable_page_level_ads: true
-    });
-  </script>
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css">
+  {% endblock meta %}
+  
+  {# Custom CSS for homepage override #}
+  {% if output_file == 'index.html' %}
+  <style>
+    /* Prevent flash of base theme styles on homepage */
+    .homepage-override {
+      min-height: 100vh;
+    }
+  </style>
   {% endif %}
-
-  {% include "partial/gtm.html" %}
-  {% include "partial/clarity.html" %}
+  
+  {# Analytics and other scripts #}
+  {% block extra_head %}{% endblock extra_head %}
 </head>
-<body {% if not THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE %}class="{{ THEME_COLOR|default('light') }}-theme"{% endif %}>
-  {% include "partial/gtm_noscript.html" %}
 
-  {% include "partial/sidebar.html" %}
-
-  <main>
-    {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.main_menu %}
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins class="adsbygoogle ads-responsive"
-           data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
-           data-ad-slot="{{ GOOGLE_ADSENSE.ads.main_menu }}"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    {% endif %}
-
-    {% include "partial/nav.html" %}
-
-    {% block content %}
-    {% endblock %}
-
-    {% include "partial/footer.html" %}
+<body>
+  {# Skip to main content for accessibility #}
+  <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
+  
+  {# Navigation #}
+  {% block navigation %}
+  <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-header">
+        <a href="{{ SITEURL }}/" class="nav-brand">
+          {% if SITELOGO %}
+          <img src="{{ SITEURL }}/{{ SITELOGO }}" alt="{{ SITENAME }} logo" class="site-logo">
+          {% endif %}
+          <span class="site-name">{{ SITENAME }}</span>
+        </a>
+        
+        {# Mobile menu toggle #}
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="{{ SITEURL }}/" {% if output_file == 'index.html' %}aria-current="page"{% endif %}>Home</a></li>
+          
+          {% if DISPLAY_PAGES_ON_MENU %}
+          {% for page in pages %}
+          <li><a href="{{ SITEURL }}/{{ page.url }}" {% if page == current_page %}aria-current="page"{% endif %}>{{ page.title }}</a></li>
+          {% endfor %}
+          {% endif %}
+          
+          {% if DISPLAY_CATEGORIES_ON_MENU %}
+          {% for cat, articles in categories %}
+          <li><a href="{{ SITEURL }}/{{ cat.url }}" {% if cat == category %}aria-current="page"{% endif %}>{{ cat }}</a></li>
+          {% endfor %}
+          {% endif %}
+          
+          {% if LINKS %}
+          {% for name, link in LINKS %}
+          <li><a href="{{ link }}" {% if link.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ name }}</a></li>
+          {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% endblock navigation %}
+  
+  {# Main content #}
+  <main id="main" role="main">
+    {% block content %}{% endblock content %}
   </main>
-
-  {% include "partial/jsonld.html" %}
-  {% include "partial/guages.html" %}
-  {% include "partial/addthis.html" %}
-  {% include "partial/matomo.html" %}
-  {% include 'partial/github.html' %}
-  {% include 'partial/stork.html' %}
-  {% include 'partial/cf_analytics.html' %}
-
-  {% block additional_js %}{% endblock %}
+  
+  {# Footer #}
+  {% block footer %}
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>{{ SITENAME }}</h3>
+          {% if SITE_DESCRIPTION %}
+          <p>{{ SITE_DESCRIPTION }}</p>
+          {% endif %}
+        </div>
+        
+        {% if SOCIAL %}
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul class="social-links" aria-label="Social media links">
+            {% for name, link in SOCIAL %}
+            <li>
+              <a href="{{ link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ name }}">
+                <i class="fab fa-{{ name.lower() }}" aria-hidden="true"></i>
+                <span class="sr-only">{{ name }}</span>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        
+        <div class="footer-section">
+          <h3>Subscribe</h3>
+          {% if FEED_ALL_ATOM %}
+          <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" class="feed-link" aria-label="Subscribe to Atom feed">
+            <i class="fas fa-rss" aria-hidden="true"></i>
+            Atom Feed
+          </a>
+          {% endif %}
+          {% if FEED_ALL_RSS %}
+          <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" class="feed-link" aria-label="Subscribe to RSS feed">
+            <i class="fas fa-rss" aria-hidden="true"></i>
+            RSS Feed
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 {{ SITENAME }}.
+          {% if COPYRIGHT %}
+          {{ COPYRIGHT }}
+          {% else %}
+          All rights reserved.
+          {% endif %}
+        </p>
+        {% if POWERED_BY %}
+        <p class="powered-by">{{ POWERED_BY }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </footer>
+  {% endblock footer %}
+  
+  {# JavaScript #}
+  <script>
+    // Mobile navigation toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+          const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('active');
+          document.body.classList.toggle('nav-open');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!event.target.closest('.main-navigation') && navMenu.classList.contains('active')) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('nav-open');
+          }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('nav-open');
+            navToggle.focus();
+          }
+        });
+      }
+    });
+    
+    // Newsletter form handling (if present)
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        const errorElement = this.querySelector('#newsletter-error');
+        
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          errorElement.textContent = 'Please enter a valid email address.';
+          errorElement.className = 'error-message';
+          return;
+        }
+        
+        // Clear error
+        errorElement.textContent = '';
+        errorElement.className = 'sr-only';
+        
+        // Here you would typically send the email to your newsletter service
+        console.log('Newsletter subscription:', email);
+        alert('Thank you for subscribing! (This is a demo - no actual subscription was created)');
+      });
+    }
+  </script>
+  
+  {% block extra_scripts %}{% endblock extra_scripts %}
 </body>
 </html>
