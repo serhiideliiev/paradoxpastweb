@@ -18,9 +18,17 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+# Flex theme specific settings
+SITETITLE = 'Project Paradox Past'
+SITESUBTITLE = 'Where past meets present in fascinating ways'
+SITEDESCRIPTION = 'A digital space exploring the intersections of history, technology, and storytelling'
+SITELOGO = None  # Add a logo URL here if you have one
+
+# Social links for Flex theme (replaces old SOCIAL widget)
+SOCIAL = (
+    ('github', 'https://github.com/serhiideliiev'),
+    ('envelope', 'mailto:your-email@example.com'),  # Replace with your email
+)
 
 DEFAULT_PAGINATION = 10
 
@@ -35,8 +43,36 @@ ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{slug}.html'
 # Static paths
 STATIC_PATHS = ['images', 'extra']
 
-# Theme settings (uncomment and modify as needed)
-# THEME = 'path-to-your-theme'
+# Extra path metadata for robots.txt
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+}
+
+# Theme settings
+THEME = 'themes/Flex'
+
+# Flex theme specific settings
+SITETITLE = 'Project Paradox Past'
+SITESUBTITLE = 'Where past meets present in fascinating ways'
+SITEDESCRIPTION = 'A digital space exploring the intersections of history, technology, and storytelling'
+SITELOGO = None  # Add a logo URL here if you have one
+
+# Social links for Flex theme
+SOCIAL = (
+    ('github', 'https://github.com/serhiideliiev'),
+    ('envelope', 'mailto:your-email@example.com'),  # Replace with your email
+)
+
+# Flex theme navigation
+MAIN_MENU = True
+MENUITEMS = (
+    ('Archives', '/archives.html'),
+    ('Categories', '/categories.html'),
+    ('Tags', '/tags.html'),
+)
+
+# Prevent search engine indexing (remove when ready to go public)
+ROBOTS = 'noindex, nofollow'
 
 # Plugin settings (uncomment and modify as needed)
 # PLUGIN_PATHS = ['pelican-plugins']
