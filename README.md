@@ -2,9 +2,7 @@
 
 ## Overview
 
-This is a Pelican static sit├── pelicanconf.py             # Main configuration (PEP-8 compliant)
-├── pelicanconf_dev.py         # Development configuration  
-├── publishconf.py             # Production configurationenerator project for exploring historical paradoxes and temporal mysteries. The project follows modern Python development practices, PEP-8 compliance, and professional web development standards.
+This is a Pelican static site generator project for exploring historical paradoxes and temporal mysteries. The project follows modern Python development practices, PEP-8 compliance, and professional web development standards.
 
 ## 🚀 Quick Start
 
@@ -76,32 +74,21 @@ project_paradox_past_website/
 ├── themes/
 │   └── custom/               # Custom theme extending Flex
 │       ├── static/
-│       │   └── css/
-│       │       ├── homepage-refactored.css    # Modern CSS architecture
-│       │       └── homepage-consolidated.css  # Legacy CSS
-│       └── templates/
-│           ├── base-refactored.html          # Modern base template
-│           ├── index-refactored.html         # Modern homepage template
-│           ├── base.html                     # Original base template
-│           └── index.html                    # Original homepage template
-├── output/                    # Generated static site
-├── pelicanconf_refactored.py  # Main configuration (PEP-8 compliant)
-├── pelicanconf_dev_refactored.py  # Development configuration
-├── publishconf.py             # Production configuration
-├── pelicanconf.py             # Original configuration (legacy)
-├── pelicanconf_dev.py         # Original dev config (legacy)
-├── Makefile                   # Development workflow automation
-│               ├── newsletter.css   # Newsletter section
-│               ├── articles.css     # Articles grid
-│               └── responsive.css   # Mobile styles
-├── docs/                     # Documentation
-│   ├── CUSTOM_DOMAIN_NOTES.md
-│   ├── DECAP_CMS_SETUP.md
-│   └── homepage-mockup.png
-├── output/                   # Generated site (git-ignored)
-├── pelicanconf.py           # Pelican configuration
-├── requirements.txt         # Python dependencies
-└── .gitignore              # Git ignore rules
+│       │   ├── css/          # Modular CSS architecture
+│       │   │   ├── homepage.css    # Homepage styles
+│       │   │   └── components/     # Individual components
+│       │   └── theme/        # Theme assets
+│       └── templates/        # Jinja2 templates
+│           ├── base.html     # Base template
+│           ├── index.html    # Homepage template
+│           └── *.html        # Other page templates
+├── pelicanconf.py            # Main configuration (PEP-8 compliant)
+├── pelicanconf_dev.py        # Development configuration
+├── publishconf.py            # Production configuration
+├── Makefile                  # Development workflow automation
+├── requirements.txt          # Python dependencies
+├── README.md                 # This file
+└── .gitignore               # Git ignore rules
 ```
 
 ## 🎨 Design System
