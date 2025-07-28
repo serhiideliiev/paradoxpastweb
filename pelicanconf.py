@@ -54,13 +54,26 @@ THEME = 'themes/custom'
 # Theme-specific settings
 MAIN_MENU = True
 DISPLAY_PAGES_ON_MENU = True
-DISPLAY_CATEGORIES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = False  # Disabled to simplify navigation
 
-# Navigation menu items
+# Disable unnecessary page generation (Pelican Flex minimalist approach)
+AUTHOR_SAVE_AS = ''  # Disable individual author pages
+AUTHORS_SAVE_AS = ''  # Disable authors index
+CATEGORY_SAVE_AS = ''  # Disable individual category pages  
+CATEGORIES_SAVE_AS = ''  # Disable categories index
+TAG_SAVE_AS = ''  # Disable individual tag pages
+TAGS_SAVE_AS = ''  # Disable tags index
+
+# Keep only essential pages
+DIRECT_TEMPLATES = ['index', 'archives']  # Only homepage and archives
+PAGINATED_TEMPLATES = {
+    'index': None,  # No pagination on homepage
+    'archives': None,  # No pagination on archives (we handle this in template)
+}
+
+# Navigation menu items (simplified)
 MENUITEMS = (
     ('Archives', '/archives.html'),
-    ('Categories', '/categories.html'),
-    ('Tags', '/tags.html'),
 )
 
 # Social links

@@ -72,16 +72,15 @@ project_paradox_past_website/
 │   ├── images/               # Content images
 │   └── *.md                  # Articles/posts
 ├── themes/
-│   └── custom/               # Custom theme extending Flex
-│       ├── static/
-│       │   ├── css/          # Modular CSS architecture
-│       │   │   ├── homepage.css    # Homepage styles
-│       │   │   └── components/     # Individual components
-│       │   └── theme/        # Theme assets
-│       └── templates/        # Jinja2 templates
+│   └── custom/               # Minimalist custom theme (Pelican Flex approach)
+│       ├── static/css/       # Essential CSS only
+│       └── templates/        # Core templates only
 │           ├── base.html     # Base template
-│           ├── index.html    # Homepage template
-│           └── *.html        # Other page templates
+│           ├── index.html    # Homepage
+│           ├── article.html  # Individual articles
+│           ├── page.html     # Static pages
+│           ├── archives.html # Articles catalog
+│           └── partial/      # Essential partials only
 ├── pelicanconf.py            # Main configuration (PEP-8 compliant)
 ├── pelicanconf_dev.py        # Development configuration
 ├── publishconf.py            # Production configuration
@@ -90,6 +89,32 @@ project_paradox_past_website/
 ├── README.md                 # This file
 └── .gitignore               # Git ignore rules
 ```
+
+### Template Optimization
+
+Following Pelican Flex theme best practices, we use a **minimalist approach** with only essential templates:
+
+**Core Templates (5):**
+- `base.html` - Base layout with navigation and footer
+- `index.html` - Homepage with hero section and featured content  
+- `article.html` - Individual article pages
+- `page.html` - Static pages
+- `archives.html` - Beautiful articles catalog page
+
+**Essential Partials (11):**
+- `og_article.html` - Open Graph meta tags for articles
+- `translations.html` - Multi-language support
+- `share_post.html` - Social sharing buttons
+- `neighbors.html` - Previous/next article navigation
+- `disqus.html` & `isso.html` - Comments integration
+- `cc_license.html`, `copyright.html`, `footer.html` - Footer components
+- `flex.html`, `statuscake.html` - Theme utilities
+
+**Disabled Features (for simplicity):**
+- Author pages - Redirected to homepage
+- Category pages - Content accessible via archives
+- Tag pages - Content accessible via archives  
+- Search functionality - Simplified navigation focus
 
 ## 🎨 Design System
 
