@@ -110,6 +110,7 @@ EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/CNAME': {'path': 'CNAME'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/.nojekyll': {'path': '.nojekyll'},
 }
 
 # =============================================================================
