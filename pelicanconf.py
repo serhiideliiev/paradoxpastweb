@@ -136,16 +136,16 @@ PLUGIN_PATHS = ['pelican-plugins']
 #     'series',
 # ]
 
-# Sitemap plugin configuration
+# Sitemap plugin configuration (disabled until site is ready)
 # SITEMAP = {
 #     'format': 'xml',
 #     'priorities': {
-#         'articles': 0.5,
-#         'indexes': 0.5,
-#         'pages': 0.5
+#         'articles': 0.7,
+#         'indexes': 0.9,
+#         'pages': 0.6
 #     },
 #     'changefreqs': {
-#         'articles': 'monthly',
+#         'articles': 'weekly',
 #         'indexes': 'daily',
 #         'pages': 'monthly'
 #     }
