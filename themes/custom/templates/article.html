@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block meta %}
+{{ super() }}
 <meta name="author" content="{{ article.author.name }}" />
 <meta name="description" content="{{ article.summary|striptags|escape }}" />
 <meta name="keywords" content="{{ article.tags|join(', ')|escape }}">
@@ -13,114 +14,413 @@
 {% endif %}
 
 {% include "partial/og_article.html" %}
+
+<style>
+/* Modern Article Page Styles */
+.article-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.article-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.article-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.article-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.article-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.article-meta-item i {
+  color: #5b72ee;
+}
+
+.article-meta a {
+  color: #5b72ee;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.article-meta a:hover {
+  color: #4c63d2;
+}
+
+.article-summary {
+  font-size: 1.2rem;
+  color: #4b5563;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #5b72ee;
+}
+
+.article-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #374151;
+  margin-bottom: 3rem;
+}
+
+.article-content h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+.article-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 2rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+.article-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.article-content p {
+  margin-bottom: 1.5rem;
+}
+
+.article-content ul, .article-content ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.article-content blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-left: 4px solid #5b72ee;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #4b5563;
+}
+
+.article-content code {
+  background: #f1f5f9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #e11d48;
+}
+
+.article-content pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.article-content pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.article-tag {
+  background: linear-gradient(135deg, #5b72ee, #9333ea);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(91, 114, 238, 0.3);
+  color: white;
+}
+
+.article-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 3rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-item {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+}
+
+.nav-item.prev {
+  text-align: left;
+}
+
+.nav-item.next {
+  text-align: right;
+}
+
+.nav-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+.share-section {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #5b72ee 0%, #9333ea 100%);
+  color: white;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.share-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.share-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.back-to-articles {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #5b72ee;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+
+.back-to-articles:hover {
+  color: #4c63d2;
+}
+
+.back-to-articles i {
+  transition: transform 0.3s ease;
+}
+
+.back-to-articles:hover i {
+  transform: translateX(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .article-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .article-title {
+    font-size: 2rem;
+  }
+  
+  .article-meta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .article-navigation {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .nav-item.next {
+    text-align: left;
+  }
+  
+  .share-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-title {
+    font-size: 1.75rem;
+  }
+  
+  .article-content {
+    font-size: 1rem;
+  }
+  
+  .article-tags {
+    justify-content: center;
+  }
+}
+</style>
 {% endblock %}
 
-{% block title %} &ndash; {{ article.title|striptags|escape }}{% endblock %}
+{% block title %}{{ article.title|striptags|escape }} &ndash; {{ SITENAME }}{% endblock %}
 
 {% block content %}
-<article class="single">
-  <header>
-    {% if not ARTICLE_HIDE_TRANSLATION %}
-      {% import 'partial/translations.html' as translations with context %}
-      {{ translations.translations_for(article) }}
-    {% endif %}
-    <h1 id="{{ article.slug }}">{{ article.title }}</h1>
-    <p>
-      {{ _('Posted on %(when)s in %(category)s',
-           when=article.locale_date,
-           category='<a href="%s/%s">%s</a>'|format(SITEURL, article.category.url, article.category)|safe) }}
+<div class="container">
+  <a href="{{ SITEURL }}/archives.html" class="back-to-articles">
+    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+    Back to Articles
+  </a>
 
-      {% if PLUGINS and 'post_stats' in PLUGINS %}
-        &#8226; {{ _('%(minutes)s min read', minutes=article.stats['read_mins']) }}
+  <article class="article-container">
+    <header class="article-header">
+      <h1 class="article-title">{{ article.title }}</h1>
+      
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <i class="fas fa-calendar" aria-hidden="true"></i>
+          <span>{{ article.locale_date }}</span>
+        </div>
+        
+        <div class="article-meta-item">
+          <i class="fas fa-user" aria-hidden="true"></i>
+          <span>{{ article.author|default(AUTHOR) }}</span>
+        </div>
+        
+        {% if article.category %}
+        <div class="article-meta-item">
+          <i class="fas fa-folder" aria-hidden="true"></i>
+          <span>{{ article.category }}</span>
+        </div>
+        {% endif %}
+        
+        {% if PLUGINS and 'post_stats' in PLUGINS %}
+        <div class="article-meta-item">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <span>{{ article.stats['read_mins'] }} min read</span>
+        </div>
+        {% endif %}
+      </div>
+
+      {% if article.summary %}
+      <div class="article-summary">
+        {{ article.summary|striptags }}
+      </div>
       {% endif %}
-    </p>
-  </header>
+    </header>
 
-  {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.article_top %}
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle ads-responsive"
-         data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
-         data-ad-slot="{{ GOOGLE_ADSENSE.ads.article_top }}"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  {% endif %}
+    <div class="article-content">
+      {{ article.content }}
+    </div>
 
-  <div>
-    {{ article.content }}
-  </div>
-  <div class="tag-cloud">
-    <p>
-      {% if article.tags %}
+    {% if article.tags %}
+    <div class="article-tags">
       {% for tag in article.tags %}
-      <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+      <span class="article-tag">{{ tag }}</span>
       {% endfor %}
-      {% endif %}
-    </p>
-  </div>
-
-  {% if article.share_post %}
-  {% include "partial/share_post.html" %}
-  {% endif %}
-
-  {% if ADD_THIS_ID %}
-  <div class="center social-share">
-    <p>{{ _('Like this article? Share it with your friends!') }}</p>
-    <div class="addthis_native_toolbox"></div>
-    <div class="addthis_sharing_toolbox"></div>
-    <div class="addthis_inline_share_toolbox"></div>
-  </div>
-  {% endif %}
-
-  {% include "partial/neighbors.html" %}
-
-  {% if article.related_posts %}
-  <div class="related-posts">
-    <h4>{{ _('You might enjoy') }}</h4>
-    <ul class="related-posts">
-    {% for related_post in article.related_posts %}
-      <li><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }}</a></li>
-    {% endfor %}
-    </ul>
-  </div>
-  {% elif ADD_THIS_ID %}
-    <div class="addthis_relatedposts_inline"></div>
-  {% endif %}
-
-  {% if article.series %}
-  <div class="related-posts">
-   {% set text = SERIES_TEXT|default('Part %(index)s of the %(name)s series') %}
-    <h4>{{ text|format(index=article.series.index, name=article.series.name) }}</h4>
-    {% if article.series.all_previous %}
-       <h5>Previous articles</h5>
-       <ul>
-       {% for article in article.series.all_previous %}
-           <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
-       {% endfor %}
-       </ul>
+    </div>
     {% endif %}
-    {% if article.series.all_next %}
-       <h5>Next articles</h5>
-       <ul>
-       {% for article in article.series.all_next %}
-           <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
-       {% endfor %}
-       </ul>
-    {% endif %}
-  </div>
-  {% endif %}
 
-  {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.article_bottom %}
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle ads-responsive"
-         data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
-         data-ad-slot="{{ GOOGLE_ADSENSE.ads.article_bottom }}"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  {% endif %}
+    <div class="share-section">
+      <h3>Found this interesting?</h3>
+      <p>Share this article with others who love exploring historical mysteries and paradoxes.</p>
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?url={{ SITEURL }}/{{ article.url }}&text={{ article.title|urlencode }}" target="_blank" class="share-btn">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          Share on Twitter
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ SITEURL }}/{{ article.url }}" target="_blank" class="share-btn">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          Share on Facebook
+        </a>
+        <a href="mailto:?subject={{ article.title|urlencode }}&body=Check out this fascinating article: {{ SITEURL }}/{{ article.url }}" class="share-btn">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          Share via Email
+        </a>
+      </div>
+    </div>
 
-  {% include "partial/disqus.html" %}
-  {% include "partial/isso.html" %}
-</article>
+    {% include "partial/neighbors.html" %}
+  </article>
+</div>
 {% endblock %}

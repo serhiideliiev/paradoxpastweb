@@ -1,14 +1,21 @@
 {% if PLUGINS and ('neighbors' in PLUGINS or 'pelican.plugins.neighbors' in PLUGINS) %}
-  <div class="neighbors">
+<div class="article-navigation">
   {% if article.prev_article %}
-    <a class="btn float-left" href="{{ SITEURL }}/{{ article.prev_article.url }}" title="{{ article.prev_article.title|striptags }}">
-      <i class="fa fa-angle-left"></i> {{ _('Previous Post') }}
+    <a class="nav-item prev" href="{{ SITEURL }}/{{ article.prev_article.url }}">
+      <div class="nav-label">← Previous Article</div>
+      <div class="nav-title">{{ article.prev_article.title|striptags }}</div>
     </a>
+  {% else %}
+    <div></div>
   {% endif %}
+  
   {% if article.next_article %}
-    <a class="btn float-right" href="{{ SITEURL }}/{{ article.next_article.url }}" title="{{ article.next_article.title|striptags }}">
-      {{ _('Next Post') }} <i class="fa fa-angle-right"></i>
+    <a class="nav-item next" href="{{ SITEURL }}/{{ article.next_article.url }}">
+      <div class="nav-label">Next Article →</div>
+      <div class="nav-title">{{ article.next_article.title|striptags }}</div>
     </a>
+  {% else %}
+    <div></div>
   {% endif %}
-  </div>
+</div>
 {% endif %}
