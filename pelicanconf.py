@@ -78,9 +78,8 @@ MENUITEMS = (
 
 # Social links
 SOCIAL = (
-    ('github', 'https://github.com/serhiideliiev'),
-    # TODO: Replace with actual email
-    ('envelope', 'mailto:contact@paradoxpast.me'),
+    ('tiktok', 'https://tiktok.com/@yourusername'),  # Replace with your actual TikTok URL
+    ('instagram', 'https://instagram.com/yourusername'),  # Replace with your actual Instagram URL
 )
 
 # Custom CSS

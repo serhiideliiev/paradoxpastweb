@@ -56,6 +56,24 @@
     </div>
   </section>
 
+  {# Social Links Section #}
+  <section class="social-section" aria-labelledby="social-heading">
+    <div class="container">
+      <h2 id="social-heading" class="section-title">Follow Our Journey</h2>
+      <p class="social-description">Join us on social media for daily historical insights and behind-the-scenes content</p>
+      <div class="social-links-hero">
+        {% if SOCIAL %}
+        {% for name, link in SOCIAL %}
+        <a href="{{ link }}" target="_blank" rel="noopener noreferrer" class="social-link social-link--{{ name.lower() }}" aria-label="Follow us on {{ name|title }}">
+          <i class="fab fa-{{ name.lower() }}" aria-hidden="true"></i>
+          <span class="social-name">{{ name|title }}</span>
+        </a>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
   {# Featured Paradoxes Section #}
   <section class="featured-section" id="featured" aria-labelledby="featured-heading">
     <div class="container">
