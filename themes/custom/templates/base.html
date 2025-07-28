@@ -112,6 +112,7 @@
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-links">
           <li><a href="{{ SITEURL }}/" {% if output_file == 'index.html' %}aria-current="page"{% endif %}>Home</a></li>
+          <li><a href="{{ SITEURL }}/archives.html" {% if output_file == 'archives.html' %}aria-current="page"{% endif %}>Articles</a></li>
           
           {% if DISPLAY_PAGES_ON_MENU %}
           {% for page in pages %}
