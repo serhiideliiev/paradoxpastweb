@@ -239,32 +239,6 @@
         });
       }
     });
-    
-    // Newsletter form handling (if present)
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const email = this.querySelector('input[type="email"]').value;
-        const errorElement = this.querySelector('#newsletter-error');
-        
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          errorElement.textContent = 'Please enter a valid email address.';
-          errorElement.className = 'error-message';
-          return;
-        }
-        
-        // Clear error
-        errorElement.textContent = '';
-        errorElement.className = 'sr-only';
-        
-        // Here you would typically send the email to your newsletter service
-        console.log('Newsletter subscription:', email);
-        alert('Thank you for subscribing! (This is a demo - no actual subscription was created)');
-      });
-    }
   </script>
   
   {# Mobile Navigation Script #}

@@ -233,61 +233,6 @@
   color: white;
 }
 
-/* Newsletter Section */
-.newsletter-section {
-  background: linear-gradient(135deg, #5b72ee 0%, #9333ea 100%);
-  color: white;
-  padding: 60px 0;
-  text-align: center;
-  border-radius: 16px;
-  margin: 60px 0;
-}
-
-.newsletter-section h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.newsletter-section p {
-  font-size: 1.125rem;
-  opacity: 0.9;
-  margin-bottom: 2rem;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.newsletter-form input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.newsletter-form button {
-  background: #f59e0b;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.newsletter-form button:hover {
-  background: #d97706;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .articles-hero h1 {
@@ -306,11 +251,6 @@
   .articles-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  
-  .newsletter-form {
-    flex-direction: column;
-    gap: 0.75rem;
   }
   
   .container {
@@ -404,16 +344,6 @@
       <a href="#" onclick="alert('Pagination functionality can be added with Pelican pagination plugin')">Next</a>
     </div>
     {% endif %}
-  </section>
-
-  <!-- Newsletter Section -->
-  <section class="newsletter-section">
-    <h2>Join Our Historical Expedition</h2>
-    <p>Subscribe to our newsletter and embark on a journey through time, exploring the fascinating paradoxes that connect our past to our present.</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter subscription feature - integrate with your preferred email service!');">
-      <input type="email" placeholder="Enter your email address" required>
-      <button type="submit">Subscribe</button>
-    </form>
   </section>
 </div>
 {% endblock %}
