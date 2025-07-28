@@ -1,3 +1,0 @@
-This is a test file to check if branch deployment is active.
-If you can access this file at http://paradoxpast.me/github-pages-test.txt,
-then GitHub Pages is deploying from the main branch instead of GitHub Actions.
