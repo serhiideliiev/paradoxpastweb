@@ -146,50 +146,9 @@
   {% block footer %}
   <footer class="site-footer" role="contentinfo">
     <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>{{ SITENAME }}</h3>
-          {% if SITE_DESCRIPTION %}
-          <p>{{ SITE_DESCRIPTION }}</p>
-          {% endif %}
-        </div>
-        
-        {% if SOCIAL %}
-        <div class="footer-section">
-          <h3>Connect</h3>
-          <ul class="social-links" aria-label="Social media links">
-            {% for name, link in SOCIAL %}
-            <li>
-              <a href="{{ link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ name }}">
-                <i class="fab fa-{{ name.lower() }}" aria-hidden="true"></i>
-                <span class="sr-only">{{ name }}</span>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-        
-        <div class="footer-section">
-          <h3>Subscribe</h3>
-          {% if FEED_ALL_ATOM %}
-          <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" class="feed-link" aria-label="Subscribe to Atom feed">
-            <i class="fas fa-rss" aria-hidden="true"></i>
-            Atom Feed
-          </a>
-          {% endif %}
-          {% if FEED_ALL_RSS %}
-          <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" class="feed-link" aria-label="Subscribe to RSS feed">
-            <i class="fas fa-rss" aria-hidden="true"></i>
-            RSS Feed
-          </a>
-          {% endif %}
-        </div>
-      </div>
-      
       <div class="footer-bottom">
         <p>
-          &copy; 2024 {{ SITENAME }}.
+          &copy; {{ CURRENT_YEAR }} {{ SITENAME }}.
           {% if COPYRIGHT %}
           {{ COPYRIGHT }}
           {% else %}

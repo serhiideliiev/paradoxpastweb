@@ -20,6 +20,9 @@ SITEDESCRIPTION = (
     'technology, and storytelling'
 )
 
+# Dynamic year for copyright
+CURRENT_YEAR = datetime.now().year
+
 # Site metadata
 SITETITLE = SITENAME
 SITESUBTITLE = 'Where past meets present in fascinating ways'
