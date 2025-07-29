@@ -33,13 +33,13 @@ p {
 }
 
 a {
-  color: #5b72ee;
+  color: #282a39;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #4c63d2;
+  color: #3c3f52;
 }
 
 /* Container and Layout */
@@ -88,7 +88,7 @@ a:hover {
 }
 
 .nav-brand:hover {
-  color: #5b72ee;
+  color: #282a39;
 }
 
 .site-logo {
@@ -128,13 +128,13 @@ a:hover {
 }
 
 .nav-links a:hover {
-  color: #5b72ee;
-  background-color: rgba(91, 114, 238, 0.1);
+  color: #282a39;
+  background-color: rgba(40, 42, 57, 0.1);
 }
 
 .nav-links a[aria-current="page"] {
-  color: #5b72ee;
-  background-color: rgba(91, 114, 238, 0.15);
+  color: #282a39;
+  background-color: rgba(40, 42, 57, 0.15);
   font-weight: 600;
 }
 
@@ -285,7 +285,7 @@ main {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  background: #5b72ee;
+  background: #282a39;
   color: white;
   text-decoration: none;
   border-radius: 4px;
@@ -341,7 +341,7 @@ main {
 /* Focus styles for accessibility */
 a:focus,
 button:focus {
-  outline: 2px solid #5b72ee;
+  outline: 2px solid #282a39;
   outline-offset: 2px;
 }
 

@@ -16,15 +16,15 @@
    ============================================================================= */
 
 :root {
-  /* Brand Colors */
-  --color-primary: #5b72ee;
-  --color-secondary: #9333ea;
+  /* Brand Colors - Based on #282a39 */
+  --color-primary: #282a39;
+  --color-secondary: #3c3f52;
   --color-accent-orange: #f59e0b;
   --color-accent-pink: #ec4899;
 
   /* Color Variations */
-  --color-primary-light: #e0e7ff;
-  --color-secondary-light: #f3e8ff;
+  --color-primary-light: #4a4d62;
+  --color-secondary-light: #5a5f78;
   --color-orange-light: #fef3c7;
 
   /* Neutral Colors */
@@ -196,7 +196,7 @@ main {
 }
 
 .btn-primary:hover {
-  background-color: #4c63d2;
+  background-color: var(--color-secondary);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
@@ -291,12 +291,12 @@ main {
 
 .paradox-card--blue {
   border-left-color: var(--color-primary);
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, rgba(224, 231, 255, 0.5) 100%);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, rgba(74, 77, 98, 0.2) 100%);
 }
 
 .paradox-card--purple {
   border-left-color: var(--color-secondary);
-  background: linear-gradient(135deg, var(--color-secondary-light) 0%, rgba(243, 232, 255, 0.5) 100%);
+  background: linear-gradient(135deg, var(--color-secondary-light) 0%, rgba(90, 95, 120, 0.2) 100%);
 }
 
 .paradox-card--orange {
@@ -336,7 +336,7 @@ main {
 
 /* Social section */
 .social-section {
-  background: linear-gradient(135deg, #5b72ee 0%, #9333ea 100%);
+  background: linear-gradient(135deg, #282a39 0%, #3c3f52 100%);
   padding: 0 !important;
   margin: 0 !important;
   min-height: calc(100vh - 70px - 80px) !important;
