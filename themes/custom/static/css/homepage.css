@@ -334,93 +334,133 @@ main {
    SOCIAL LINKS SECTION
    ============================================================================= */
 
+/* Social section */
 .social-section {
-  padding: 0;
-  margin: 0;
-  min-height: calc(100vh - 70px - 80px); /* Full height minus header (~70px) and footer (~80px) */
+  background: linear-gradient(135deg, #5b72ee 0%, #9333ea 100%);
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: calc(100vh - 70px - 80px) !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
-  text-align: center;
 }
 
-.social-section .container {
+.social-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 600px;
   padding: 2rem;
 }
 
-.social-section .section-title {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  color: var(--color-text-primary);
-}
-
-.social-description {
-  font-size: 1.25rem;
-  color: var(--color-text-secondary);
+.social-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
   margin-bottom: 3rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.social-links-hero {
+.social-links {
   display: flex;
+  gap: 3rem;
+  width: 100%;
   justify-content: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .social-link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  padding: 2.5rem;
-  border-radius: 20px;
-  background: var(--color-background-primary);
+  justify-content: center;
   text-decoration: none;
+  padding: 2rem;
+  border-radius: 25px;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
-  min-width: 180px;
-  border: 2px solid transparent;
+  width: 180px;
+  height: 180px;
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  position: relative;
 }
 
 .social-link:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 .social-link i {
-  font-size: 3.5rem;
-  transition: color 0.3s ease;
+  font-size: 4.5rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
 }
 
 .social-name {
-  font-weight: var(--font-weight-semibold);
-  font-size: 1.25rem;
-  color: var(--color-text-primary);
-  transition: color 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
-/* Platform-specific styling */
+/* Platform-specific styling - Official App Icon Style */
+.social-link--tiktok {
+  background: #000000;
+  border: 3px solid #ff0050;
+  box-shadow: 0 0 20px rgba(255, 0, 80, 0.3);
+}
+
+.social-link--tiktok i {
+  color: #ffffff;
+  filter: drop-shadow(2px 0 0 #ff0050) drop-shadow(-2px 0 0 #00f2ea);
+}
+
+.social-link--tiktok .social-name {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 0, 80, 0.5);
+}
+
 .social-link--tiktok:hover {
-  border-color: #ff0050;
+  background: #ff0050;
+  border-color: #ffffff;
+  box-shadow: 0 0 40px rgba(255, 0, 80, 0.8);
 }
 
 .social-link--tiktok:hover i {
-  color: #ff0050;
+  color: #ffffff;
+  filter: none;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 .social-link--tiktok:hover .social-name {
-  color: #ff0050;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.social-link--instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 20px rgba(228, 64, 95, 0.3);
+}
+
+.social-link--instagram i {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.social-link--instagram .social-name {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .social-link--instagram:hover {
+  background: #ffffff;
   border-color: #e4405f;
+  box-shadow: 0 0 40px rgba(228, 64, 95, 0.8);
 }
 
 .social-link--instagram:hover i {
@@ -428,10 +468,12 @@ main {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: none;
 }
 
 .social-link--instagram:hover .social-name {
   color: #e4405f;
+  text-shadow: 0 0 10px rgba(228, 64, 95, 0.5);
 }
 
 /* =============================================================================
@@ -441,38 +483,36 @@ main {
 @media (max-width: 768px) {
   .social-section {
     padding: 0;
-    min-height: calc(100vh - 70px - 80px); /* Maintain full height on mobile */
+    min-height: calc(100vh - 70px - 80px);
   }
   
-  .social-section .container {
+  .social-content {
     padding: 1.5rem;
   }
   
-  .social-section .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  .social-title {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
   }
   
-  .social-description {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-  }
-  
-  .social-links-hero {
-    gap: 1.5rem;
+  .social-links {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
   }
   
   .social-link {
-    padding: 2rem;
-    min-width: 150px;
+    width: 160px;
+    height: 160px;
+    padding: 1.5rem;
   }
   
   .social-link i {
-    font-size: 3rem;
+    font-size: 4rem;
   }
   
   .social-name {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   
   .container,
@@ -485,36 +525,35 @@ main {
 @media (max-width: 480px) {
   .social-section {
     padding: 0;
-    min-height: calc(100vh - 70px - 80px); /* Maintain full height on small mobile */
+    min-height: calc(100vh - 70px - 80px);
   }
   
-  .social-section .container {
+  .social-content {
     padding: 1rem;
   }
   
-  .social-section .section-title {
-    font-size: 2rem;
+  .social-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
   }
   
-  .social-description {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .social-links-hero {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  .social-links {
+    gap: 1.5rem;
   }
   
   .social-link {
-    width: 100%;
-    max-width: 220px;
-    padding: 1.5rem;
+    width: 140px;
+    height: 140px;
+    padding: 1.25rem;
+    border-radius: 20px;
   }
   
   .social-link i {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+  }
+  
+  .social-name {
+    font-size: 0.9rem;
   }
   
   .container,

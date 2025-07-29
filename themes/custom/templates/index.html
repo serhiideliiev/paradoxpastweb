@@ -16,19 +16,16 @@
 <div class="homepage-override">
   
   {# Social Links Section #}
-  <section class="social-section" aria-labelledby="social-heading">
-    <div class="container">
-      <h2 id="social-heading" class="section-title">Follow Our Journey</h2>
-      <p class="social-description">Join us on social media for daily historical insights and behind-the-scenes content</p>
-      <div class="social-links-hero">
-        {% if SOCIAL %}
+    <section class="social-section">
+    <div class="social-content">
+      <h2 class="social-title">Watch More Videos on TikTok and Instagram!</h2>
+      <div class="social-links">
         {% for name, link in SOCIAL %}
-        <a href="{{ link }}" target="_blank" rel="noopener noreferrer" class="social-link social-link--{{ name.lower() }}" aria-label="Follow us on {{ name|title }}">
-          <i class="fab fa-{{ name.lower() }}" aria-hidden="true"></i>
-          <span class="social-name">{{ name|title }}</span>
-        </a>
+          <a href="{{ link }}" class="social-link social-link--{{ name.lower() }}" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-{{ name.lower() }}"></i>
+            <span class="social-name">{{ name }}</span>
+          </a>
         {% endfor %}
-        {% endif %}
       </div>
     </div>
   </section>
@@ -77,7 +74,7 @@ main {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%) !important;
+  background: linear-gradient(135deg, #5b72ee 0%, #9333ea 100%) !important;
 }
 
 /* Override any container margins */
