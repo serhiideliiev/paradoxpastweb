@@ -190,6 +190,7 @@ a:hover {
     flex-direction: column;
     gap: 0;
     padding: 1rem 0;
+    text-align: center;
   }
   
   .nav-links a {
@@ -197,6 +198,8 @@ a:hover {
     padding: 1rem 2rem;
     border-radius: 0;
     border-bottom: 1px solid #f3f4f6;
+    text-align: center;
+    font-weight: 500;
   }
   
   .nav-links a:last-child {

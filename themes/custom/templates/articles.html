@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block title %}Articles &ndash; {{ SITENAME }}{% endblock %}
+
+{% block meta %}
+{{ super() }}
+<style>
+/* Articles Page Styles - Consistent with Homepage */
+.articles-container {
+  background: linear-gradient(135deg, #5b72ee 0%, #9333ea 100%);
+  min-height: calc(100vh - 150px);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.articles-content {
+  max-width: 1000px;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.articles-hero {
+  margin-bottom: 3rem;
+}
+
+.articles-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.articles-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.article-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.article-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.article-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(3px);
+  color: white;
+}
+
+/* Coming Soon Message */
+.coming-soon {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.coming-soon h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.coming-soon p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .articles-container {
+    min-height: calc(100vh - 140px);
+  }
+  
+  .articles-content {
+    padding: 1.5rem;
+  }
+  
+  .articles-title {
+    font-size: 2.5rem;
+  }
+  
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .article-card {
+    padding: 1.5rem;
+  }
+  
+  .coming-soon {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .articles-title {
+    font-size: 2rem;
+  }
+  
+  .articles-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .article-card {
+    padding: 1.25rem;
+  }
+  
+  .coming-soon {
+    padding: 1.5rem;
+  }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="articles-container">
+  <div class="articles-content">
+    <div class="articles-hero">
+      <h1 class="articles-title">Articles</h1>
+      <p class="articles-subtitle">Explore fascinating stories about historical mysteries, paradoxes, and the untold secrets of our past</p>
+    </div>
+
+    {% if dates and dates|length > 0 %}
+    <div class="articles-grid">
+      {% for article in dates[:6] %}
+      <article class="article-card">
+        <h3>{{ article.title }}</h3>
+        <div class="article-meta">
+          <span>{{ article.locale_date }}</span>
+          <span>{{ article.author|default(AUTHOR) }}</span>
+        </div>
+        <p>{{ article.summary|default(article.content|striptags|truncate(120)) }}</p>
+        <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">
+          Read More
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="coming-soon">
+      <h2>Articles Coming Soon!</h2>
+      <p>We're working on some amazing content about historical mysteries and paradoxes. Check back soon for fascinating stories that will take you on a journey through time!</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{# Complete override for articles layout to match homepage #}
+<style>
+main {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: auto !important;
+}
+
+.site-footer {
+  margin-top: 0 !important;
+}
+</style>
+{% endblock %}

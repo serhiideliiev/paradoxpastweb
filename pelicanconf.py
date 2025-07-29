@@ -68,7 +68,7 @@ TAG_SAVE_AS = ''  # Disable individual tag pages
 TAGS_SAVE_AS = ''  # Disable tags index
 
 # Keep only essential pages
-DIRECT_TEMPLATES = ['index', 'archives']  # Only homepage and archives
+DIRECT_TEMPLATES = ['index', 'articles', 'archives']  # Homepage, articles, and archives (archives hidden from nav)
 PAGINATED_TEMPLATES = {
     'index': None,  # No pagination on homepage
     'archives': None,  # No pagination on archives (we handle this in template)
