@@ -36,7 +36,9 @@ FAVICON = 'images/favicon.ico'  # Favicon for browser tab
 # Content paths
 PATH = 'content'
 OUTPUT_PATH = 'output/'
-STATIC_PATHS = ['images', 'extra']
+STATIC_PATHS = ['images', 'extra', 'admin']
+ARTICLE_PATHS = ['articles']
+PAGE_PATHS = ['pages']
 
 # Content processing
 TIMEZONE = 'UTC'

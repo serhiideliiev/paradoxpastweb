@@ -1,0 +1,63 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+# When using the default proxy server port
+local_backend: true
+
+media_folder: "content/images" # Media files will be stored in the repo under content/images
+public_folder: "/images" # The src attribute for uploaded media will begin with /images
+
+collections:
+  - name: "articles" # Used in routes, e.g., /admin/collections/articles
+    label: "Articles" # Used in the UI
+    folder: "content/articles" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Modified", name: "modified", widget: "datetime", required: false}
+      - {label: "Category", name: "category", widget: "select", options: ["History", "Science", "Technology", "Culture", "Mystery"]}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Author", name: "author", widget: "select", options: ["Project Paradox Past Team"], default: "Project Paradox Past Team"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages" # Used in routes, e.g., /admin/collections/pages
+    label: "Pages" # Used in the UI
+    folder: "content/pages" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Modified", name: "modified", widget: "datetime", required: false}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Site Configuration"
+        name: "config"
+        file: "pelicanconf.py"
+        fields:
+          - {label: "Site Name", name: "SITENAME", widget: "string"}
+          - {label: "Site Description", name: "SITESUBTITLE", widget: "string"}
+          - {label: "Site URL", name: "SITEURL", widget: "string"}
+          - {label: "Author", name: "AUTHOR", widget: "string"}
+          - {label: "Timezone", name: "TIMEZONE", widget: "string"}
+          - {label: "Default Language", name: "DEFAULT_LANG", widget: "string"}
+
+# Site preview configuration
+site_url: https://paradoxpast.me
+display_url: https://paradoxpast.me
+logo_url: https://paradoxpast.me/images/logo.png
+
+# Editorial workflow
+publish_mode: editorial_workflow
