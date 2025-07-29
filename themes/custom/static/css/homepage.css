@@ -321,24 +321,38 @@ body {
    ============================================================================= */
 
 .social-section {
-  padding: var(--space-3xl) 0;
+  padding: 6rem 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
   background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
   text-align: center;
 }
 
+.social-section .container {
+  width: 100%;
+}
+
+.social-section .section-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+}
+
 .social-description {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-xl);
-  max-width: 600px;
+  margin-bottom: 3rem;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
 }
 
 .social-links-hero {
   display: flex;
   justify-content: center;
-  gap: var(--space-xl);
+  gap: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -346,30 +360,30 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-xl);
-  border-radius: 16px;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  border-radius: 20px;
   background: var(--color-background-primary);
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  min-width: 140px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
+  min-width: 180px;
   border: 2px solid transparent;
 }
 
 .social-link:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 }
 
 .social-link i {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   transition: color 0.3s ease;
 }
 
 .social-name {
   font-weight: var(--font-weight-semibold);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   color: var(--color-text-primary);
   transition: color 0.3s ease;
 }
@@ -407,36 +421,36 @@ body {
    ============================================================================= */
 
 @media (max-width: 768px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-    text-align: center;
+  .social-section {
+    padding: 4rem 0;
+    min-height: 50vh;
   }
   
-  .hero-text h1 {
-    font-size: 2rem;
+  .social-section .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
   
-  .paradox-cards {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+  .social-description {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
   }
   
   .social-links-hero {
-    gap: var(--space-lg);
+    gap: 1.5rem;
   }
   
   .social-link {
-    padding: var(--space-lg);
-    min-width: 120px;
+    padding: 2rem;
+    min-width: 150px;
   }
   
   .social-link i {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   
   .social-name {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
   
   .container,
@@ -444,31 +458,37 @@ body {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
   }
-  
-  .section-title {
-    font-size: 1.5rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 1.75rem;
+  .social-section {
+    padding: 3rem 0;
+    min-height: 40vh;
   }
   
-  .section-title {
-    font-size: 1.375rem;
+  .social-section .section-title {
+    font-size: 2rem;
+  }
+  
+  .social-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .social-links-hero {
     flex-direction: column;
     align-items: center;
-    gap: var(--space-md);
+    gap: 1rem;
   }
   
   .social-link {
     width: 100%;
-    max-width: 200px;
-    padding: var(--space-md);
+    max-width: 220px;
+    padding: 1.5rem;
+  }
+  
+  .social-link i {
+    font-size: 2.5rem;
   }
   
   .container,
