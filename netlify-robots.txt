@@ -1,6 +1,25 @@
 User-agent: *
 Disallow: /
 
-# This robots.txt is for the Netlify deployment
+# Block all major search engines explicitly
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+# This robots.txt is for the Netlify deployment (paradoxpast.netlify.app)
 # The main site (paradoxpast.me) has its own robots.txt
-# This prevents indexing of the Netlify URL
+# This prevents any indexing of the Netlify URL

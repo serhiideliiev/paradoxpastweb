@@ -25,6 +25,8 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # SEO blocking headers - prevent indexing
+    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet, noimageindex"
 
 # Admin page headers for CMS
 [[headers]]
