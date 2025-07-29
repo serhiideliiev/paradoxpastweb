@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /
+
+# This robots.txt is for the Netlify deployment
+# The main site (paradoxpast.me) has its own robots.txt
+# This prevents indexing of the Netlify URL

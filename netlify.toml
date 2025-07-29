@@ -5,6 +5,30 @@
 [build.environment]
   PYTHON_VERSION = "3.11"
 
+# Redirect all Netlify URLs to main domain (except admin)
+[[redirects]]
+  from = "https://paradoxpast.netlify.app/*"
+  to = "https://paradoxpast.me/:splat"
+  status = 301
+  force = true
+  conditions = {Role = [""], Country = [""]}
+
+# Keep admin accessible for CMS functionality
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Block indexing with robots.txt
+[[redirects]]
+  from = "/robots.txt"
+  to = "/netlify-robots.txt"
+  status = 200mmand = "pip install -r requirements.txt && pelican content -o output -s pelicanconf.py"
+  publish = "output"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
 # Redirects for better URL handling
 [[redirects]]
   from = "/admin/*"
