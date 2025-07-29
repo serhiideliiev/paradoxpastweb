@@ -26,7 +26,8 @@ CURRENT_YEAR = datetime.now().year
 # Site metadata
 SITETITLE = SITENAME
 SITESUBTITLE = 'Where past meets present in fascinating ways'
-SITELOGO = None  # TODO: Add logo URL when available
+SITELOGO = 'images/logo.png'  # Project logo for header
+FAVICON = 'images/favicon.ico'  # Favicon for browser tab
 
 # =============================================================================
 # CONTENT CONFIGURATION
