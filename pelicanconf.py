@@ -27,7 +27,7 @@ CURRENT_YEAR = datetime.now().year
 SITETITLE = SITENAME
 SITESUBTITLE = 'Where past meets present in fascinating ways'
 SITELOGO = 'images/logo.png'  # Project logo for header
-FAVICON = 'images/favicon.ico'  # Favicon for browser tab
+FAVICON = 'favicon.ico'  # Favicon for browser tab (copied to root)
 
 # =============================================================================
 # CONTENT CONFIGURATION
@@ -44,7 +44,7 @@ PAGE_PATHS = ['pages']
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/CNAME': {'path': 'CNAME'},
-    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'images/favicon.ico': {'path': 'favicon.ico'},
     'extra/.nojekyll': {'path': '.nojekyll'},
     '_redirects': {'path': '_redirects'},
 }
