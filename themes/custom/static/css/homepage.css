@@ -104,10 +104,18 @@ body {
    LAYOUT COMPONENTS
    ============================================================================= */
 
-.homepage-override #content {
-  max-width: none;
+.homepage-override {
+  margin: 0;
+  padding: 0;
+}
+
+/* Override main element padding for homepage */
+body:has(.homepage-override) main,
+.homepage-override + main,
+main:has(.homepage-override) {
   padding: 0;
   margin: 0;
+  min-height: auto;
 }
 
 .container {
@@ -321,16 +329,19 @@ body {
    ============================================================================= */
 
 .social-section {
-  padding: 6rem 0;
-  min-height: 60vh;
+  padding: 0;
+  min-height: calc(100vh - 70px - 100px); /* Full height minus header (~70px) and footer (~100px) */
   display: flex;
   align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
   text-align: center;
 }
 
 .social-section .container {
   width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
 }
 
 .social-section .section-title {
@@ -422,8 +433,12 @@ body {
 
 @media (max-width: 768px) {
   .social-section {
-    padding: 4rem 0;
-    min-height: 50vh;
+    padding: 0;
+    min-height: calc(100vh - 70px - 80px); /* Maintain full height on mobile */
+  }
+  
+  .social-section .container {
+    padding: 1.5rem;
   }
   
   .social-section .section-title {
@@ -462,8 +477,12 @@ body {
 
 @media (max-width: 480px) {
   .social-section {
-    padding: 3rem 0;
-    min-height: 40vh;
+    padding: 0;
+    min-height: calc(100vh - 70px - 80px); /* Maintain full height on small mobile */
+  }
+  
+  .social-section .container {
+    padding: 1rem;
   }
   
   .social-section .section-title {
