@@ -1,6 +1,16 @@
-# Redirect Netlify domain to main domain
-https://paradoxpast.netlify.app/* https://paradoxpast.me/:splat 301!
+# Redirect specific pages to main domain (surgical approach)
+/ https://paradoxpast.me/ 301!
+/index.html https://paradoxpast.me/ 301!
+/posts/* https://paradoxpast.me/posts/:splat 301!
+/pages/* https://paradoxpast.me/pages/:splat 301!
+/images/* https://paradoxpast.me/images/:splat 301!
+/archives.html https://paradoxpast.me/archives.html 301!
+/categories.html https://paradoxpast.me/categories.html 301!
+/tags.html https://paradoxpast.me/tags.html 301!
 
-# Keep admin and API endpoints accessible
-https://paradoxpast.netlify.app/admin/* https://paradoxpast.netlify.app/admin/:splat 200
-https://paradoxpast.netlify.app/.netlify/* https://paradoxpast.netlify.app/.netlify/:splat 200
+# Keep admin interface accessible
+/admin /admin/index.html 200
+/admin/* /admin/:splat 200
+
+# Keep Netlify services accessible  
+/.netlify/* /.netlify/:splat 200
