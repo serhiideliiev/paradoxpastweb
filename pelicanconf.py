@@ -36,9 +36,18 @@ FAVICON = 'images/favicon.ico'  # Favicon for browser tab
 # Content paths
 PATH = 'content'
 OUTPUT_PATH = 'output/'
-STATIC_PATHS = ['images', 'extra', 'admin']
+STATIC_PATHS = ['images', 'extra', 'admin', '_redirects']
 ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
+
+# Extra files to copy to output root
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/.nojekyll': {'path': '.nojekyll'},
+    '_redirects': {'path': '_redirects'},
+}
 
 # Content processing
 TIMEZONE = 'UTC'
@@ -122,14 +131,6 @@ DISPLAY_TAGS_ON_SIDEBAR = True
 # =============================================================================
 
 DELETE_OUTPUT_DIRECTORY = True
-
-# Extra path metadata for special files
-EXTRA_PATH_METADATA = {
-    'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/CNAME': {'path': 'CNAME'},
-    'extra/favicon.ico': {'path': 'favicon.ico'},
-    'extra/.nojekyll': {'path': '.nojekyll'},
-}
 
 # =============================================================================
 # SEO AND METADATA

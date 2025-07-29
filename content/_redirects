@@ -1,0 +1,6 @@
+# Redirect Netlify domain to main domain
+https://paradoxpast.netlify.app/* https://paradoxpast.me/:splat 301!
+
+# Keep admin and API endpoints accessible
+https://paradoxpast.netlify.app/admin/* https://paradoxpast.netlify.app/admin/:splat 200
+https://paradoxpast.netlify.app/.netlify/* https://paradoxpast.netlify.app/.netlify/:splat 200
