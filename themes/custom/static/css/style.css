@@ -180,7 +180,7 @@ a:hover {
     transition: all 0.3s ease;
   }
   
-  .nav-menu.active {
+  .nav-open .nav-menu {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;

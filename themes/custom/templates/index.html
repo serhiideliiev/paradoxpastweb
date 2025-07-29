@@ -22,7 +22,13 @@
       <div class="social-links">
         {% for name, link in SOCIAL %}
           <a href="{{ link }}" class="social-link social-link--{{ name.lower() }}" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-{{ name.lower() }}"></i>
+            {% if name.lower() == 'tiktok' %}
+              <i class="fab fa-tiktok" aria-hidden="true"></i>
+            {% elif name.lower() == 'instagram' %}
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            {% else %}
+              <i class="fab fa-{{ name.lower() }}" aria-hidden="true"></i>
+            {% endif %}
           </a>
         {% endfor %}
       </div>
