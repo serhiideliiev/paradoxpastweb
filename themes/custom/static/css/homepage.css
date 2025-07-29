@@ -109,13 +109,19 @@ body {
   padding: 0;
 }
 
+/* Complete layout override for homepage - eliminate all white spaces */
+.homepage-override ~ footer,
+.homepage-override + footer,
+body:has(.homepage-override) .site-footer,
+.site-footer {
+  margin-top: 0 !important;
+}
+
 /* Override main element padding for homepage */
-body:has(.homepage-override) main,
-.homepage-override + main,
-main:has(.homepage-override) {
-  padding: 0;
-  margin: 0;
-  min-height: auto;
+main {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: auto !important;
 }
 
 .container {
@@ -330,7 +336,8 @@ main:has(.homepage-override) {
 
 .social-section {
   padding: 0;
-  min-height: calc(100vh - 70px - 100px); /* Full height minus header (~70px) and footer (~100px) */
+  margin: 0;
+  min-height: calc(100vh - 70px - 80px); /* Full height minus header (~70px) and footer (~80px) */
   display: flex;
   align-items: center;
   justify-content: center;
