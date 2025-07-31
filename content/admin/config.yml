@@ -2,14 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-site_url: https://paradoxpast.me
-display_url: https://paradoxpast.me
-logo_url: https://paradoxpast.me/images/logo.png
-
 media_folder: "content/images"
 public_folder: "/images"
-
-publish_mode: editorial_workflow
 
 collections:
   - name: "articles"
@@ -20,25 +14,9 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Modified", name: "modified", widget: "datetime", required: false}
       - {label: "Category", name: "category", widget: "select", options: ["History", "Science", "Technology", "Culture", "Mystery"]}
       - {label: "Tags", name: "tags", widget: "list", required: false}
       - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Author", name: "author", widget: "select", options: ["Project Paradox Past Team"], default: "Project Paradox Past Team"}
+      - {label: "Author", name: "author", widget: "string", default: "Project Paradox Past Team"}
       - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Featured Image", name: "image", widget: "image", required: false}
-      - {label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published"}
-      - {label: "Body", name: "body", widget: "markdown"}
-
-  - name: "pages"
-    label: "Pages"
-    folder: "content/pages"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Modified", name: "modified", widget: "datetime", required: false}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published"}
       - {label: "Body", name: "body", widget: "markdown"}
