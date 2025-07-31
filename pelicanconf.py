@@ -36,7 +36,7 @@ FAVICON = 'favicon.ico'  # Favicon for browser tab (copied to root)
 # Content paths
 PATH = 'content'
 OUTPUT_PATH = 'output/'
-STATIC_PATHS = ['images', 'extra', 'admin', '_redirects']
+STATIC_PATHS = ['images', 'extra', '_redirects']
 ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
 
