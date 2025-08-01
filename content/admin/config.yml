@@ -11,12 +11,21 @@ collections:
     folder: "content/articles"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary_fields: ["title", "date", "category", "summary"]
-    sortable_fields: ["date", "title", "category", "author"]
+    summary_fields: ["title", "date", "category", "status", "author"]
+    sortable_fields: ["date", "title", "category", "author", "status"]
     view_filters:
       - label: "All Articles"
         field: title
         pattern: ".*"
+      - label: "Published Articles"
+        field: status
+        pattern: "published"
+      - label: "Draft Articles"
+        field: status
+        pattern: "draft"
+      - label: "Featured Articles"
+        field: featured
+        pattern: "true"
       - label: "Published This Year"
         field: date
         pattern: "2025"
@@ -58,12 +67,101 @@ collections:
         field: category
       - label: "By Author"
         field: author
+      - label: "By Status"
+        field: status
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Category", name: "category", widget: "select", options: ["History", "Science", "Technology", "Culture", "Mystery", "Psychology", "Physics", "Archaeology", "Blog", "Welcome"]}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Author", name: "author", widget: "select", options: ["Project Paradox Past Team", "Paradox Past"], default: "Project Paradox Past Team"}
-      - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Date", name: "date", widget: "datetime", required: true}
+      - {label: "Modified Date", name: "modified", widget: "datetime", required: false}
+      - {label: "Category", name: "category", widget: "select", options: ["History", "Science", "Technology", "Culture", "Mystery", "Psychology", "Physics", "Archaeology", "Blog", "Welcome"], required: true}
+      - {label: "Tags", name: "tags", widget: "list", required: false, hint: "Add relevant tags for this article"}
+      - {label: "Slug", name: "slug", widget: "string", required: true, hint: "URL-friendly version of the title"}
+      - {label: "Author", name: "author", widget: "select", options: ["Project Paradox Past Team", "Paradox Past"], default: "Project Paradox Past Team", required: true}
+      - {label: "Summary", name: "summary", widget: "text", required: true, hint: "Brief description for SEO and article previews"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false, hint: "Main image for the article"}
+      - {label: "Featured Image Alt Text", name: "image_alt", widget: "string", required: false, hint: "Accessibility description for the featured image"}
+      - {label: "Status", name: "status", widget: "select", options: ["published", "draft", "archived"], default: "draft", required: true}
+      - {label: "Featured Article", name: "featured", widget: "boolean", default: false, required: false, hint: "Mark as featured on homepage"}
+      - {label: "Reading Time", name: "reading_time", widget: "number", required: false, hint: "Estimated reading time in minutes"}
+      - {label: "Meta Description", name: "meta_description", widget: "text", required: false, hint: "SEO meta description (150-160 characters)"}
+      - {label: "Meta Keywords", name: "meta_keywords", widget: "list", required: false, hint: "SEO keywords"}
+      - {label: "Related Articles", name: "related_articles", widget: "list", required: false, hint: "Links to related content"}
+      - {label: "Body", name: "body", widget: "markdown", required: true}
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    summary_fields: ["title", "date", "status"]
+    sortable_fields: ["date", "title", "status"]
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Date", name: "date", widget: "datetime", required: true}
+      - {label: "Modified Date", name: "modified", widget: "datetime", required: false}
+      - {label: "Slug", name: "slug", widget: "string", required: true}
+      - {label: "Template", name: "template", widget: "select", options: ["page", "about", "contact"], default: "page", required: false}
+      - {label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "draft", required: true}
+      - {label: "Meta Description", name: "meta_description", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: true}
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "content/settings/general.yml"
+        fields:
+          - {label: "Site Name", name: "site_name", widget: "string", required: true}
+          - {label: "Site Description", name: "site_description", widget: "text", required: true}
+          - {label: "Site URL", name: "site_url", widget: "string", required: true}
+          - {label: "Author", name: "author", widget: "string", required: true}
+          - {label: "Email", name: "email", widget: "string", required: false}
+          - {label: "Timezone", name: "timezone", widget: "string", default: "UTC", required: true}
+          - {label: "Default Language", name: "default_lang", widget: "string", default: "en", required: true}
+          - {label: "Theme Color", name: "theme_color", widget: "color", default: "#282a39", required: false}
+          - {label: "Background Color", name: "background_color", widget: "color", default: "#ffffff", required: false}
+          - {label: "Enable Analytics", name: "analytics_enabled", widget: "boolean", default: false}
+          - {label: "Google Analytics ID", name: "google_analytics_id", widget: "string", required: false}
+          - {label: "Enable Comments", name: "comments_enabled", widget: "boolean", default: false}
+          - {label: "Comments Provider", name: "comments_provider", widget: "select", options: ["disqus", "utterances", "giscus"], required: false}
+
+      - label: "Social Media"
+        name: "social"
+        file: "content/settings/social.yml"
+        fields:
+          - {label: "Twitter Username", name: "twitter", widget: "string", required: false}
+          - {label: "Facebook Page", name: "facebook", widget: "string", required: false}
+          - {label: "Instagram Username", name: "instagram", widget: "string", required: false}
+          - {label: "LinkedIn Profile", name: "linkedin", widget: "string", required: false}
+          - {label: "GitHub Username", name: "github", widget: "string", required: false}
+          - {label: "YouTube Channel", name: "youtube", widget: "string", required: false}
+          - {label: "Email Contact", name: "email", widget: "string", required: false}
+
+      - label: "Navigation"
+        name: "navigation"
+        file: "content/settings/navigation.yml"
+        fields:
+          - label: "Main Menu"
+            name: "main_menu"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "External Link", name: "external", widget: "boolean", default: false}
+
+      - label: "SEO Settings"
+        name: "seo"
+        file: "content/settings/seo.yml"
+        fields:
+          - {label: "Default Meta Description", name: "default_meta_description", widget: "text"}
+          - {label: "Default Meta Keywords", name: "default_meta_keywords", widget: "list"}
+          - {label: "Open Graph Image", name: "og_image", widget: "image"}
+          - {label: "Twitter Card Type", name: "twitter_card_type", widget: "select", options: ["summary", "summary_large_image"], default: "summary_large_image"}
+          - {label: "Site Verification", name: "site_verification", widget: "object", fields: [
+              {label: "Google", name: "google", widget: "string", required: false},
+              {label: "Bing", name: "bing", widget: "string", required: false},
+              {label: "Yandex", name: "yandex", widget: "string", required: false}
+            ]}
+
+publish_mode: editorial_workflow
