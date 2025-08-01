@@ -1,11 +1,15 @@
-Title: The Beginning of Something New
-Date: 2025-07-27 01:40
-Category: Blog
-Tags: introduction, first-post, journey
-Slug: the-beginning-of-something-new
-Authors: Paradox Past
-Summary: Welcome to my digital space where past meets present in fascinating ways.
-
+---
+title: "The Beginning of Something New"
+date: 2025-07-27T01:40:00Z
+category: Blog
+tags:
+  - introduction
+  - first-post
+  - journey
+slug: the-beginning-of-something-new
+author: Paradox Past
+summary: "Welcome to my digital space where past meets present in fascinating ways."
+---
 # The Beginning of Something New
 
 Welcome to **Project Paradox Past** - a space where history, technology, and storytelling converge in unexpected ways.

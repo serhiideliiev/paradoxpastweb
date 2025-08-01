@@ -1,10 +1,14 @@
-Title: Welcome to Project Paradox Past
-Date: 2024-01-01 10:00
-Category: Welcome
-Tags: introduction, paradoxes, history
-Slug: welcome-to-paradox-past
-Summary: An introduction to our fascinating journey through historical paradoxes and temporal mysteries that challenge our understanding of time and reality.
-
+---
+title: "Welcome to Project Paradox Past"
+date: 2024-01-01T10:00:00Z
+category: Welcome
+tags:
+  - introduction
+  - paradoxes
+  - history
+slug: welcome-to-paradox-past
+summary: "An introduction to our fascinating journey through historical paradoxes and temporal mysteries that challenge our understanding of time and reality."
+---
 # Welcome to Project Paradox Past
 
 Welcome to a digital space where history meets mystery, and the past intersects with profound questions about the nature of time itself.

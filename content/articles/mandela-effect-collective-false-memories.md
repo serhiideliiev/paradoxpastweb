@@ -1,10 +1,15 @@
-Title: The Mandela Effect: Collective False Memories Throughout History
-Date: 2024-01-15 14:30
-Category: Psychology
-Tags: mandela-effect, memory, collective-psychology, paradoxes
-Slug: mandela-effect-collective-false-memories
-Summary: Exploring the phenomenon of shared false memories and how entire populations can remember historical events that never occurred the way they think they did.
-
+---
+title: "The Mandela Effect: Collective False Memories Throughout History"
+date: 2024-01-15T14:30:00Z
+category: Psychology
+tags:
+  - mandela-effect
+  - memory
+  - collective-psychology
+  - paradoxes
+slug: mandela-effect-collective-false-memories
+summary: "Exploring the phenomenon of shared false memories and how entire populations can remember historical events that never occurred the way they think they did."
+---
 # The Mandela Effect: Collective False Memories Throughout History
 
 The human mind is far from the reliable recording device we often assume it to be. When thousands of people share identical false memories of historical events, we encounter one of the most fascinating paradoxes of human consciousness: the Mandela Effect.

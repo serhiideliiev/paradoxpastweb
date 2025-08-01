@@ -1,10 +1,15 @@
-Title: The Antikythera Mechanism: Ancient Greek Computer or Time Traveler's Tool?
-Date: 2024-01-20 09:15
-Category: Archaeology
-Tags: antikythera, ancient-technology, greece, mysteries
-Slug: antikythera-mechanism-ancient-computer
-Summary: Discovered in a Mediterranean shipwreck, the Antikythera Mechanism's sophisticated gear system suggests technological capabilities that shouldn't have existed in ancient Greece.
-
+---
+title: "The Antikythera Mechanism: Ancient Greek Computer or Time Traveler's Tool?"
+date: 2024-01-20T09:15:00Z
+category: Archaeology
+tags:
+  - antikythera
+  - ancient-technology
+  - greece
+  - mysteries
+slug: antikythera-mechanism-ancient-computer
+summary: "Discovered in a Mediterranean shipwreck, the Antikythera Mechanism's sophisticated gear system suggests technological capabilities that shouldn't have existed in ancient Greece."
+---
 # The Antikythera Mechanism: Ancient Greek Computer or Time Traveler's Tool?
 
 In 1901, sponge divers discovered something impossible: a bronze device so technologically advanced that it wouldn't be matched in complexity for another 1,000 years. The Antikythera Mechanism stands as one of archaeology's greatest paradoxes.

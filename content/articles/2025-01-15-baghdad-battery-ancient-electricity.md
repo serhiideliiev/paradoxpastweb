@@ -1,14 +1,15 @@
-Title: The Mystery of the Baghdad Battery
-Date: 2025-01-15 10:00
-Modified: 2025-01-15 10:00
-Category: History
-Tags: ancient-technology, mystery, archaeology
-Slug: baghdad-battery-ancient-electricity
-Author: Project Paradox Past Team
-Summary: Could ancient civilizations have discovered electricity thousands of years before Benjamin Franklin? The Baghdad Battery suggests they might have.
-Image: images/baghdad-battery.jpg
-Status: published
-
+---
+title: "The Mystery of the Baghdad Battery"
+date: 2025-01-15T10:00:00Z
+category: History
+tags:
+  - ancient-technology
+  - mystery
+  - archaeology
+slug: baghdad-battery-ancient-electricity
+author: Project Paradox Past Team
+summary: "Could ancient civilizations have discovered electricity thousands of years before Benjamin Franklin? The Baghdad Battery suggests they might have."
+---
 # The Mystery of the Baghdad Battery: Ancient Electricity?
 
 In 1936, German archaeologist Wilhelm König made a discovery that would puzzle historians and scientists for decades. While working at the National Museum of Iraq, he uncovered a collection of artifacts that seemed impossibly advanced for their time: clay jars containing copper cylinders and iron rods that appeared to be ancient electrical batteries.

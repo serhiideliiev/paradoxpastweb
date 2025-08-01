@@ -1,10 +1,15 @@
-Title: The Fermi Paradox: Where Are All the Time Travelers?
-Date: 2024-01-10 16:45
-Category: Physics
-Tags: fermi-paradox, time-travel, physics, paradoxes
-Slug: fermi-paradox-where-are-time-travelers
-Summary: If time travel will ever be invented, why haven't we encountered visitors from the future? This temporal twist on the famous Fermi Paradox explores the mysteries of causality and chronology.
-
+---
+title: "The Fermi Paradox: Where Are All the Time Travelers?"
+date: 2024-01-10T16:45:00Z
+category: Physics
+tags:
+  - fermi-paradox
+  - time-travel
+  - physics
+  - paradoxes
+slug: fermi-paradox-where-are-time-travelers
+summary: "If time travel will ever be invented, why haven't we encountered visitors from the future? This temporal twist on the famous Fermi Paradox explores the mysteries of causality and chronology."
+---
 # The Fermi Paradox: Where Are All the Time Travelers?
 
 The Fermi Paradox asks: "If the universe is so vast and old, where is everybody?" But there's a temporal version of this paradox that's equally puzzling: If time travel will ever be possible, where are all the time travelers?
