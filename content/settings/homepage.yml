@@ -1,0 +1,8 @@
+homepage_title: Social Icons
+show_social_section: true
+social_links:
+  - icon_class: fab fa-
+    platform: tiktok
+    username: paradoxpastai
+    url: https://www.tiktok.com/@paradoxpastai
+show_featured_articles: true
