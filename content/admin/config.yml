@@ -108,6 +108,27 @@ collections:
   - name: "settings"
     label: "Site Settings"
     files:
+      - label: "Homepage Settings"
+        name: "homepage"
+        file: "content/settings/homepage.yml"
+        fields:
+          - {label: "Homepage Title", name: "homepage_title", widget: "string", default: "Watch More Videos on TikTok and Instagram!", required: true}
+          - {label: "Homepage Subtitle", name: "homepage_subtitle", widget: "text", required: false}
+          - {label: "Hero Background Color", name: "hero_bg_color", widget: "color", default: "#6366f1", required: false}
+          - {label: "Show Social Section", name: "show_social_section", widget: "boolean", default: true}
+          - label: "Social Media Links"
+            name: "social_links"
+            widget: "list"
+            fields:
+              - {label: "Platform", name: "platform", widget: "select", options: ["tiktok", "instagram", "twitter", "facebook", "youtube", "linkedin", "github"], required: true}
+              - {label: "Username/Handle", name: "username", widget: "string", required: true, hint: "Your username without @ symbol"}
+              - {label: "Full URL", name: "url", widget: "string", required: true, hint: "Complete URL to your profile"}
+              - {label: "Display Text", name: "display_text", widget: "string", required: false, hint: "Optional custom text for the link"}
+              - {label: "Icon Class", name: "icon_class", widget: "string", default: "fab fa-", required: false, hint: "Font Awesome icon class"}
+          - {label: "Featured Articles Section", name: "show_featured_articles", widget: "boolean", default: false}
+          - {label: "Articles Section Title", name: "articles_section_title", widget: "string", default: "Latest Articles", required: false}
+          - {label: "Max Featured Articles", name: "max_featured_articles", widget: "number", default: 3, required: false}
+
       - label: "General Settings"
         name: "general"
         file: "content/settings/general.yml"
@@ -133,6 +154,7 @@ collections:
           - {label: "Twitter Username", name: "twitter", widget: "string", required: false}
           - {label: "Facebook Page", name: "facebook", widget: "string", required: false}
           - {label: "Instagram Username", name: "instagram", widget: "string", required: false}
+          - {label: "TikTok Username", name: "tiktok", widget: "string", required: false}
           - {label: "LinkedIn Profile", name: "linkedin", widget: "string", required: false}
           - {label: "GitHub Username", name: "github", widget: "string", required: false}
           - {label: "YouTube Channel", name: "youtube", widget: "string", required: false}
