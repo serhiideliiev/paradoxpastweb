@@ -58,9 +58,6 @@ collections:
         field: category
       - label: "By Author"
         field: author
-      - label: "By Year"
-        field: date
-        pattern: "(\d{4})"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
