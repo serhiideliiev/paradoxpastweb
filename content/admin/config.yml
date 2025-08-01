@@ -12,32 +12,61 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary_fields: ["title", "date", "category", "summary"]
-    sortable_fields: ["date", "title", "category"]
+    sortable_fields: ["date", "title", "category", "author"]
     view_filters:
-      - label: "History"
+      - label: "All Articles"
+        field: title
+        pattern: ".*"
+      - label: "Published This Year"
+        field: date
+        pattern: "2025"
+      - label: "Published Last Year"
+        field: date
+        pattern: "2024"
+      - label: "History Articles"
         field: category
         pattern: "History"
-      - label: "Science"
+      - label: "Science Articles"
         field: category
         pattern: "Science"
-      - label: "Technology" 
+      - label: "Technology Articles"
         field: category
         pattern: "Technology"
-      - label: "Culture"
+      - label: "Culture Articles"
         field: category
         pattern: "Culture"
-      - label: "Mystery"
+      - label: "Mystery Articles"
         field: category
         pattern: "Mystery"
-    view_groups:
-      - label: "Category"
+      - label: "Psychology Articles"
         field: category
+        pattern: "Psychology"
+      - label: "Physics Articles"
+        field: category
+        pattern: "Physics"
+      - label: "Archaeology Articles"
+        field: category
+        pattern: "Archaeology"
+      - label: "Blog Posts"
+        field: category
+        pattern: "Blog"
+      - label: "Welcome Posts"
+        field: category
+        pattern: "Welcome"
+    view_groups:
+      - label: "By Category"
+        field: category
+      - label: "By Author"
+        field: author
+      - label: "By Year"
+        field: date
+        pattern: "(\d{4})"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Category", name: "category", widget: "select", options: ["History", "Science", "Technology", "Culture", "Mystery"]}
+      - {label: "Category", name: "category", widget: "select", options: ["History", "Science", "Technology", "Culture", "Mystery", "Psychology", "Physics", "Archaeology", "Blog", "Welcome"]}
       - {label: "Tags", name: "tags", widget: "list", required: false}
       - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Author", name: "author", widget: "string", default: "Project Paradox Past Team"}
+      - {label: "Author", name: "author", widget: "select", options: ["Project Paradox Past Team", "Paradox Past"], default: "Project Paradox Past Team"}
       - {label: "Summary", name: "summary", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
