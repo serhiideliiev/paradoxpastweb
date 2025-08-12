@@ -93,8 +93,8 @@ MENUITEMS = (
 
 # Social links
 SOCIAL = (
-    ('tiktok', 'https://tiktok.com/@yourusername'),  # Replace with your actual TikTok URL
-    ('instagram', 'https://instagram.com/yourusername'),  # Replace with your actual Instagram URL
+    ('tiktok', 'https://tiktok.com/@paradoxpastai'),  # Replace with your actual TikTok URL
+    ('instagram', 'https://instagram.com/paradoxpastai'),  # Replace with your actual Instagram URL
 )
 
 # Custom CSS
