@@ -530,18 +530,19 @@ main {
   transform: translateY(-3px);
 }
 .social-link .social-icon-bg {
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   transition: all 0.3s ease;
   display: block;
   margin: 0 auto;
-  background-size: contain;
+  background-size: 60%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
 }
 
 .social-link--tiktok .social-icon-bg {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.321 5.562a5.122 5.122 0 0 1-.443-.258 6.228 6.228 0 0 1-1.137-.966c-.632-.748-.632-1.854-.632-1.854V1.6h-2.874v14.78c0 1.38-1.004 2.502-2.235 2.502-1.23 0-2.234-1.122-2.234-2.502 0-1.38 1.004-2.502 2.234-2.502.246 0 .483.046.706.13V11.05a5.124 5.124 0 0 0-.706-.048c-2.795 0-5.06 2.388-5.06 5.332 0 2.944 2.265 5.332 5.06 5.332 2.795 0 5.06-2.388 5.06-5.332V8.362a8.957 8.957 0 0 0 4.321 1.094V6.578c-.901 0-1.758-.362-2.374-.962-.048-.046-.096-.092-.144-.138z'/%3E%3C/svg%3E");
+  background-size: 65%;
+  background-position: center center;  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.525 2.303c1.198 0 2.297 0 3.445.002.016.72.12 1.495.407 2.137.405.906 1.097 1.582 1.946 2.025.613.32 1.315.487 1.994.488v3.436c-.67-.012-1.356-.125-1.978-.35-.45-.165-.874-.389-1.26-.66-.13-.091-.253-.189-.375-.289v4.305c0 1.97-.747 3.716-1.963 5.057-1.216 1.342-2.885 2.2-4.771 2.2-3.863 0-7-3.13-7-6.986 0-3.855 3.137-6.985 7-6.985.73 0 1.43.119 2.085.337v3.753c-.628-.457-1.4-.728-2.234-.728-2.045 0-3.7 1.649-3.7 3.683 0 2.034 1.655 3.683 3.7 3.683 2.043 0 3.698-1.649 3.698-3.683V2.303h.046z'%3E%3C/svg%3E");
 }
 
 .social-link--instagram .social-icon-bg {
