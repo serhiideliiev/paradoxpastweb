@@ -398,56 +398,13 @@ main {
   display: block;
 }
 
-/* Platform-specific styling - Official Logo Style */
-.social-link--tiktok {
-  background: #000000;
-  box-shadow: 0 0 20px rgba(255, 0, 80, 0.3);
-  border: none !important;
-  outline: none !important;
-}
 
-.social-link--tiktok i {
-  color: #ffffff;
-  filter: drop-shadow(3px 0 0 #ff0050) drop-shadow(-3px 0 0 #00f2ea);
-}
 
-.social-link--tiktok:hover {
-  background: #ff0050;
-  box-shadow: 0 0 40px rgba(255, 0, 80, 0.8);
-  border: none !important;
-}
 
-.social-link--tiktok:hover i {
-  color: #ffffff;
-  filter: none;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-}
 
-.social-link--instagram {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  box-shadow: 0 0 20px rgba(228, 64, 95, 0.3);
-  border: none !important;
-  outline: none !important;
-}
 
-.social-link--instagram i {
-  color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
 
-.social-link--instagram:hover {
-  background: #ffffff;
-  box-shadow: 0 0 40px rgba(228, 64, 95, 0.8);
-  border: none !important;
-}
 
-.social-link--instagram:hover i {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
-}
 
 /* =============================================================================
    RESPONSIVE DESIGN
@@ -544,6 +501,34 @@ main {
 }
 
 
+/* Platform-specific button backgrounds */
+.social-link--tiktok {
+  background: #000000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border: none !important;
+  outline: none !important;
+}
+
+.social-link--tiktok:hover {
+  background: #000000;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  border: none !important;
+  transform: translateY(-3px);
+}
+
+.social-link--instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  box-shadow: 0 0 20px rgba(228, 64, 95, 0.3);
+  border: none !important;
+  outline: none !important;
+}
+
+.social-link--instagram:hover {
+  background: linear-gradient(45deg, #f56040 0%, #f77737 25%, #f6983f 50%, #e862ad 75%, #e24c8b 100%);
+  box-shadow: 0 0 40px rgba(228, 64, 95, 0.8);
+  border: none !important;
+  transform: translateY(-3px);
+}
 .social-link .social-icon-bg {
   width: 6rem;
   height: 6rem;
