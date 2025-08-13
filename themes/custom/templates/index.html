@@ -23,9 +23,9 @@
         {% for name, link in SOCIAL %}
           <a href="{{ link }}" class="social-link social-link--{{ name.lower() }}" target="_blank" rel="noopener noreferrer">
             {% if name.lower() == 'tiktok' %}
-              <i class="fab fa-tiktok" aria-hidden="true"></i>
+              <div class="social-icon-bg"></div>
             {% elif name.lower() == 'instagram' %}
-              <i class="fab fa-instagram" aria-hidden="true"></i>
+              <div class="social-icon-bg"></div>
             {% else %}
               <i class="fab fa-{{ name.lower() }}" aria-hidden="true"></i>
             {% endif %}
