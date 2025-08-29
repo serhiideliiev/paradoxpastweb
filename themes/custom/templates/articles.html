@@ -4,7 +4,6 @@
 
 {% block meta %}
 {{ super() }}
-{# Custom articles page styles - following homepage design patterns #}
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ SITEURL }}/theme/css/icons.css">
 {% endblock %}
@@ -52,9 +51,7 @@
   </div>
 </div>
 
-{# Consistent styling with homepage design system #}
 <style>
-/* CSS Variables - Consistent with Homepage */
 :root {
   --color-primary: #282a39;
   --color-secondary: #3c3f52;
@@ -73,7 +70,6 @@
   --radius-xl: 1rem;
 }
 
-/* Layout Override - Consistent with Homepage */
 main {
   padding: 0 !important;
   margin: 0 !important;
@@ -92,7 +88,6 @@ main {
   flex-direction: column;
 }
 
-/* Articles Container - Following Homepage Gradient Pattern */
 .articles-container {
   background: linear-gradient(135deg, #282a39 0%, #3c3f52 100%);
   min-height: calc(100vh - 70px - 80px);
@@ -112,7 +107,6 @@ main {
   text-align: center;
 }
 
-/* Hero Section - Consistent with Homepage Typography */
 .articles-hero {
   margin-bottom: var(--space-3xl);
 }
@@ -137,7 +131,97 @@ main {
   margin-right: auto;
 }
 
-/* Coming Soon Message - Elegant Empty State */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.article-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var(--transition-slow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.article-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+  color: white;
+}
+
+.article-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: var(--space-lg);
+  color: white;
+}
+
+.article-meta {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  font-size: 0.875rem;
+  opacity: 0.8;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: white;
+}
+
+.meta-item .icon {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  transition: all var(--transition-normal);
+}
+
+.read-more:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(3px);
+  color: white;
+  text-decoration: none;
+}
+
+.read-more .icon {
+  font-size: 1rem;
+  transition: transform var(--transition-normal);
+}
+
+.read-more:hover .icon {
+  transform: translateX(2px);
+}
+
 .coming-soon {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -172,12 +256,13 @@ main {
   margin: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .articles-container {
-    min-height: calc(100vh - 70px - 80px);
+@media (max-width: 1024px) {
+  .articles-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-  
+}
+
+@media (max-width: 768px) {
   .articles-content {
     padding: var(--space-lg);
   }
@@ -190,12 +275,23 @@ main {
     font-size: 1.1rem;
   }
   
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .article-card {
+    padding: var(--space-lg);
+  }
+  
   .coming-soon {
     padding: var(--space-xl);
   }
   
-  .coming-soon-icon {
-    font-size: 3rem;
+  .article-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
   }
 }
 
@@ -208,16 +304,12 @@ main {
     font-size: 1rem;
   }
   
+  .article-card {
+    padding: var(--space-md);
+  }
+  
   .coming-soon {
     padding: var(--space-lg);
-  }
-  
-  .coming-soon h2 {
-    font-size: 1.5rem;
-  }
-  
-  .coming-soon p {
-    font-size: 1rem;
   }
 }
 </style>
