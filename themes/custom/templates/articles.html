@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}Articles &ndash; {{ SITENAME }}{% endblock %}
+
+{% block meta %}
+{{ super() }}
+{# Custom articles page styles - following homepage design patterns #}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ SITEURL }}/theme/css/icons.css">
+{% endblock %}
+
+{% block content %}
+<div class="articles-override">
+  <div class="articles-container">
+    <div class="articles-content">
+      <div class="articles-hero">
+        <h1 class="articles-title">Articles</h1>
+        <p class="articles-subtitle">Explore fascinating stories about historical mysteries, paradoxes, and the untold secrets of our past</p>
+      </div>
+
+      {% if dates and dates|length > 0 %}
+      <div class="articles-grid">
+        {% for article in dates[:6] %}
+        <article class="article-card">
+          <h3>{{ article.title }}</h3>
+          <div class="article-meta">
+            <span class="meta-item">
+              <span class="icon">📅</span>
+              {{ article.locale_date }}
+            </span>
+            <span class="meta-item">
+              <span class="icon">👤</span>
+              {{ article.author|default(AUTHOR) }}
+            </span>
+          </div>
+          <p>{{ article.summary|default(article.content|striptags|truncate(120)) }}</p>
+          <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">
+            Read More
+            <span class="icon">→</span>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="coming-soon">
+        <span class="coming-soon-icon">📚</span>
+        <h2>Articles Coming Soon!</h2>
+        <p>We're working on some amazing content about historical mysteries and paradoxes. Check back soon for fascinating stories that will take you on a journey through time!</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{# Consistent styling with homepage design system #}
+<style>
+/* CSS Variables - Consistent with Homepage */
+:root {
+  --color-primary: #282a39;
+  --color-secondary: #3c3f52;
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --transition-normal: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* Layout Override - Consistent with Homepage */
+main {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: auto !important;
+}
+
+.site-footer {
+  margin-top: 0 !important;
+}
+
+.articles-override {
+  margin: 0;
+  padding: 0;
+  min-height: calc(100vh - 70px - 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Articles Container - Following Homepage Gradient Pattern */
+.articles-container {
+  background: linear-gradient(135deg, #282a39 0%, #3c3f52 100%);
+  min-height: calc(100vh - 70px - 80px);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-family-primary);
+}
+
+.articles-content {
+  max-width: 1200px;
+  width: 100%;
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+/* Hero Section - Consistent with Homepage Typography */
+.articles-hero {
+  margin-bottom: var(--space-3xl);
+}
+
+.articles-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+  color: white;
+}
+
+.articles-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  color: white;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Coming Soon Message - Elegant Empty State */
+.coming-soon {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.coming-soon-icon {
+  display: block;
+  font-size: 4rem;
+  margin-bottom: var(--space-lg);
+  opacity: 0.7;
+}
+
+.coming-soon h2 {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.9;
+  color: white;
+  font-weight: 600;
+}
+
+.coming-soon p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  color: white;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .articles-container {
+    min-height: calc(100vh - 70px - 80px);
+  }
+  
+  .articles-content {
+    padding: var(--space-lg);
+  }
+  
+  .articles-title {
+    font-size: 2.5rem;
+  }
+  
+  .articles-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .coming-soon {
+    padding: var(--space-xl);
+  }
+  
+  .coming-soon-icon {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .articles-title {
+    font-size: 2rem;
+  }
+  
+  .articles-subtitle {
+    font-size: 1rem;
+  }
+  
+  .coming-soon {
+    padding: var(--space-lg);
+  }
+  
+  .coming-soon h2 {
+    font-size: 1.5rem;
+  }
+  
+  .coming-soon p {
+    font-size: 1rem;
+  }
+}
+</style>
+
+{% endblock content %}
